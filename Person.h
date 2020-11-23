@@ -17,19 +17,20 @@
 class Person
 {
 public:
-  Person();
+  Person(int newID, string newFirstName, string newLastName);
   ~Person();
 
   //getters and setters
-  int getPersonID();
-  string getFirstName();
-  string getLastName();
-  void setPersonID();
-  void setFirstName();
-  void setLastName();
+  int GetID();
+  string GetFirstName();
+  string GetLastName();
+  void SetFirstName(string newFirstName);
+  void SetLastName(string newLastName);
+
+  //virtual void printPerson();
 
 private:
-  int    personID;
+  int    id;
   string firstName;
   string lastName;
 };
