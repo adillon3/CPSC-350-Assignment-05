@@ -13,7 +13,8 @@
  class Student : public Person
 {
 public:
-  Student(int newID, string newFirstName, string newLastName);
+  Student(int newID, string newFirstName, string newLastName, string newStudentLevel,
+    string major, double gpa, int newAdvisorID);
   ~Student();
 
   //getters and setters
@@ -27,12 +28,12 @@ public:
   void printPerson();
 
 private:
-  static int getID();
+  static int makeStudentID();
 
   string studentLevel;
   string major;
   double gpa;
-  int    advisor;
+  int    advisorID;
 };
 
  #endif // STUDENT_H_

@@ -31,6 +31,7 @@ public:
   virtual void printPerson();
 
 private:
+
   int    id;
   string firstName;
   string lastName;
