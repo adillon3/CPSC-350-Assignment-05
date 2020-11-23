@@ -5,12 +5,12 @@
  * Assignment 05
  *******************************/
 
- #ifndef STUDENT_H_
- #define STUDENT_H_
+#ifndef STUDENT_H_
+#define STUDENT_H_
 
- #include "Person.h"
+#include "Person.h"
 
- class Student : public Person
+class Student : public Person
 {
 public:
   Student(int newID, string newFirstName, string newLastName, string newStudentLevel,

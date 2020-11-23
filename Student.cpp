@@ -21,35 +21,35 @@ Student :: ~Student()
  }
 
  //getters and setters
- string GetStudentLevel()
+ string Student :: GetStudentLevel()
  {
    return studentLevel;
  }
- string GetMajor()
+ string Student :: GetMajor()
  {
    return major;
  }
- double GetGPA()
+ double Student :: GetGPA()
  {
    return gpa;
  }
- int GetAdvisorID()
+ int Student :: GetAdvisorID()
  {
    return advisorID;
  }
- void SetStudentLevel(string newStudentLevel)
+ void Student :: SetStudentLevel(string newStudentLevel)
  {
    studentLevel = newStudentLevel;
  }
- void SetMajor(string newMajor)
+ void Student :: SetMajor(string newMajor)
  {
    major = newMajor;
  }
- void SetGPA(double newGPA)
+ void Student :: SetGPA(double newGPA)
  {
    gpa = newGPA;
  }
- void SetAdvisorID(int newAdvisorID)
+ void Student :: SetAdvisorID(int newAdvisorID)
  {
     advisorID = newAdvisorID;
  }
