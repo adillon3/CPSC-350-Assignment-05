@@ -41,5 +41,12 @@ void Person :: SetLastName(string newLastName)
 }
 
 //virtual methods
-void Person :: printPerson()
+void Person :: PrintPerson(ostream& oFile)
 {}
+
+//protected methods
+void Person :: PrintPersonAttributes(ostream& oFile)
+{
+  oFile << "ID:   " << id << endl;
+  oFile << "Name: " << lastName << ", " << firstName << endl;
+}

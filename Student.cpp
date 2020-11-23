@@ -24,7 +24,14 @@ Student :: ~Student()
 
 
  //virtual methods
- void Student :: printPerson()
+ void Student :: PrintPerson(ostream& oFile)
  {
-   cout << "YOYOYOYOYO\n";
+   oFile << "------------------------------------\n";
+   PrintPersonAttributes(oFile);
+   oFile << "------------------------------------\n";
+   oFile << "Level:   " << studentLevel << endl;
+   oFile << "Majpr:   " << major << endl;
+   oFile << "GPA:     " << gpa << endl;
+   oFile << "Advisor: " << advisorID << endl;
+   oFile << "------------------------------------\n\n";
  }

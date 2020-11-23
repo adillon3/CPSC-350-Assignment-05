@@ -5,13 +5,17 @@
  * Assignment 05
  *******************************/
 
-//#include "Person.h"
-#include "Student.h"
+ #include "Assign5.h"
 
  int main()
  {
-   Student myStudent();
 
+   cout << "Hello" << endl << endl;
 
+   Student myStudent(12345, "Travis", "McElroy", "Junior", "Stage Craft", 2.5, 67890);
+
+   myStudent.PrintPerson(cout);
+
+   cout << "END\n\n";
    return 0;
  }

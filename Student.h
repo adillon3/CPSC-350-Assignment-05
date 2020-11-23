@@ -25,7 +25,7 @@ public:
   void SetLastName(string newLastName);
 
   //virtual methods
-  void printPerson();
+  void PrintPerson(ostream& oFile);
 
 private:
   static int makeStudentID();
