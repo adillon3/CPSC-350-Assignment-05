@@ -14,18 +14,30 @@
 {
 public:
   Student(int newID, string newFirstName, string newLastName, string newStudentLevel,
-    string major, double gpa, int newAdvisorID);
+    string newMajor, double newGPA, int newAdvisorID);
   ~Student();
 
   //getters and setters
+  string GetStudentLevel();
+  string GetMajor();
+  double GetGPA();
+  int GetAdvisorID();
+  void SetStudentLevel(string newStudentLevel);
+  void SetMajor(string newMajor);
+  void SetGPA(double newGPA);
+  void SetAdvisorID(int newAdvisorID);
+
+
+  //virtual methods
+  void PrintPerson(ostream& oFile);
+
+  //methods fom super
+  /*
   int GetID();
   string GetFirstName();
   string GetLastName();
   void SetFirstName(string newFirstName);
-  void SetLastName(string newLastName);
-
-  //virtual methods
-  void PrintPerson(ostream& oFile);
+  void SetLastName(string newLastName);*/
 
 private:
   static int makeStudentID();

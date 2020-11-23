@@ -21,7 +21,38 @@ Student :: ~Student()
  }
 
  //getters and setters
-
+ string GetStudentLevel()
+ {
+   return studentLevel;
+ }
+ string GetMajor()
+ {
+   return major;
+ }
+ double GetGPA()
+ {
+   return gpa;
+ }
+ int GetAdvisorID()
+ {
+   return advisorID;
+ }
+ void SetStudentLevel(string newStudentLevel)
+ {
+   studentLevel = newStudentLevel;
+ }
+ void SetMajor(string newMajor)
+ {
+   major = newMajor;
+ }
+ void SetGPA(double newGPA)
+ {
+   gpa = newGPA;
+ }
+ void SetAdvisorID(int newAdvisorID)
+ {
+    advisorID = newAdvisorID;
+ }
 
  //virtual methods
  void Student :: PrintPerson(ostream& oFile)
