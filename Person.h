@@ -27,7 +27,8 @@ public:
   void SetFirstName(string newFirstName);
   void SetLastName(string newLastName);
 
-  //virtual void printPerson();
+  //virtual methods
+  virtual void printPerson();
 
 private:
   int    id;

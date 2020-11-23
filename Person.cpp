@@ -39,3 +39,7 @@ void Person :: SetLastName(string newLastName)
 {
   lastName = newLastName;
 }
+
+//virtual methods
+void Person :: printPerson()
+{}

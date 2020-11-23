@@ -5,12 +5,4 @@
  * Assignment 05
  *******************************/
 
-#include "Person.h"
-
- int main()
- {
-
-
-
-   return 0;
- }
+ #include "Student.h"
