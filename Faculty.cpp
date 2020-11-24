@@ -9,24 +9,45 @@
 
 
 Faculty :: Faculty(int newID, string newFirstName, string newLastName, string newFacultyLevel,
-  string newDepartment, DoublyLinkedList<int> newAdviseesIDs) : Person(newID, newFirstName, newLastName)
+  string newDepartment, DoublyLinkedList<int> newAdviseesIDsList) : Person(newID, newFirstName, newLastName)
 {
   facultyLevel = newFacultyLevel;
   department = newDepartment;
-  adviseesIDs = newAdviseesIDs;
+  adviseesIDsList = newAdviseesIDsList;
 }
 Faculty :: ~Faculty()
 {}
-/*
+
 //getters and setters
-string Faculty :: GetFacultyLevel();
-string Faculty :: GetDepartment();
-DoublyLinkedList<int> Faculty :: GetAdviseesIDs();
-void Faculty :: SetFacultyLevel();
-void Faculty :: SetDepartment();
-void Faculty :: AddAdvisee(int newAdvisee);
-void Faculty :: RemoveAdvisee(int newAdvisee);
-*/
+string Faculty :: GetFacultyLevel()
+{
+  return facultyLevel;
+}
+string Faculty :: GetDepartment()
+{
+  return department;
+}
+DoublyLinkedList<int> Faculty :: GetAdviseesIDs()
+{
+  return adviseesIDsList;
+}
+void Faculty :: SetFacultyLevel(string newFacultyLevel)
+{
+  facultyLevel = newFacultyLevel;
+}
+void Faculty :: SetDepartment(string newDepartment)
+{
+  department = newDepartment;
+}
+void Faculty :: AddAdvisee(int newAdvisee)
+{
+  adviseesIDsList.InsertBack(newAdvisee);
+}
+void Faculty :: RemoveAdvisee(int oldAdvisee)
+{
+  adviseesIDsList.Delete(oldAdvisee);
+}
+
 
 //virtual methods
 void Faculty :: PrintPerson(ostream& oFile)

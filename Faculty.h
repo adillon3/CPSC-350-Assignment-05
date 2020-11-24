@@ -15,17 +15,17 @@
  {
  public:
   Faculty(int newID, string newFirstName, string newLastName,
-    string newFacultyLevel, string newDepartment, DoublyLinkedList<int> newAdviseesIDs);
+    string newFacultyLevel, string newDepartment, DoublyLinkedList<int> newAdviseesIDsList);
   ~Faculty();
 
   //getters and setters
   string GetFacultyLevel();
   string GetDepartment();
   DoublyLinkedList<int> GetAdviseesIDs();
-  void SetFacultyLevel();
-  void SetDepartment();
+  void SetFacultyLevel(string newFacultyLevel);
+  void SetDepartment(string newDepartment);
   void AddAdvisee(int newAdvisee);
-  void RemoveAdvisee(int newAdvisee);
+  void RemoveAdvisee(int oldAdvisee);
 
 
   //virtual methods
@@ -44,7 +44,7 @@
 
   string facultyLevel;
   string department;
-  DoublyLinkedList<int> adviseesIDs;
+  DoublyLinkedList<int> adviseesIDsList;
 
 
 
