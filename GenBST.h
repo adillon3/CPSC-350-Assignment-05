@@ -9,6 +9,8 @@
 
  #include "TreeNode.h"
 
+
+template <class x>
 class BST
 {
 public:
@@ -22,9 +24,9 @@ public:
     //call delete and use traversal method
   }
 
-  void InsertNode(int value)
+  void InsertNode(x value)
   {
-    TreeNode *node = new TreeNode(value);
+    TreeNode<x> *node = new TreeNode<x>(value);
 
     if(IsEmpty())
     {
@@ -32,8 +34,8 @@ public:
     }
     else // not an empty tree, find insertion point
     {
-      TreeNode *current = root;
-      TreeNode *parent = nullptr;
+      TreeNode<x> *current = root;
+      TreeNode<x> *parent = nullptr;
 
       while(true)
       {
@@ -63,7 +65,7 @@ public:
       }
     }
   }
-  bool SearchNode(int value)
+  bool SearchNode(x value)
   {
     if(IsEmpty())
     {
@@ -72,7 +74,7 @@ public:
     else
     {
       //tree is not empty, lets go looking for the node
-      TreeNode *current = root;
+      TreeNode<x> *current = root;
       while(current -> key != value)
       {
         if(value < current -> key)
@@ -91,7 +93,7 @@ public:
     }
     return true;
   }
-  bool deleteNode(int value)
+  bool deleteNode(x value)
   {
     if(IsEmpty()) // root is null
     {
@@ -99,8 +101,8 @@ public:
     }
     //invoke search to determine if it exists in the tree or not
 
-    TreeNode* parent  = nullptr;
-    TreeNode* current = root;
+    TreeNode<x>* parent  = nullptr;
+    TreeNode<x>* current = root;
     bool isLeftNode   = true;
 
     //finding node
@@ -178,7 +180,7 @@ public:
     else
     {
       //find successor
-      TreeNode* successor = GetSuccessor(current);//current is node to be deleteNode
+      TreeNode<x>* successor = GetSuccessor(current);//current is node to be deleteNode
 
       if(current == root)
       {
@@ -199,11 +201,11 @@ public:
 
 }
 
-  TreeNode* GetSuccessor(TreeNode *d)//helper function for delete.  d is node to delete
+  TreeNode<x>* GetSuccessor(TreeNode<x> *d)//helper function for delete.  d is node to delete
   {
-     TreeNode* sp = d;
-     TreeNode* successor = d;
-     TreeNode* current = d -> right;
+     TreeNode<x>* sp = d;
+     TreeNode<x>* successor = d;
+     TreeNode<x>* current = d -> right;
 
      while(current != nullptr)
      {
@@ -233,14 +235,14 @@ public:
       return false;
     }
   }
-  int  GetMax()
+  x  GetMax()
   {
     if(root = nullptr)
     {
       throw "Tree Empty: No Max Value";
     }
 
-    TreeNode *temp = root;
+    TreeNode<x> *temp = root;
     while(temp -> right != nullptr)
     {
       temp = temp -> right;
@@ -248,14 +250,14 @@ public:
 
     return temp -> key;
   }
-  int  GetMin()
+  x  GetMin()
   {
     if(IsEmpty())
     {
       throw "Tree Empty: No Minimum Value";
     }
 
-    TreeNode *temp = root;
+    TreeNode<x> *temp = root;
 
     while(temp -> left != nullptr)
     {
@@ -265,7 +267,7 @@ public:
     return temp -> key;
   }
 
-  void RecPrint(TreeNode *node);
+  void RecPrint(TreeNode<x> *node);
   void PrintTree();
 
   void InOrder()
@@ -284,7 +286,7 @@ public:
 
 private:
   //traversals
-    void InOrderHelper(TreeNode* n)
+    void InOrderHelper(TreeNode<x>* n)
     {
       if(n != nullptr)
       {
@@ -293,7 +295,7 @@ private:
         InOrderHelper(n -> right);
       }
     }
-    void PostOrderHelper(TreeNode* n)
+    void PostOrderHelper(TreeNode<x>* n)
     {
       if(n != nullptr)
       {
@@ -302,7 +304,7 @@ private:
         cout << n -> key << endl;
       }
     }
-    void PreOrderHelper(TreeNode* n)
+    void PreOrderHelper(TreeNode<x>* n)
     {
       if(n != nullptr)
       {
@@ -313,7 +315,7 @@ private:
     }
 
 
-  TreeNode *root;
+  TreeNode<x> *root;
 };
 
  #endif // GENBST_H_

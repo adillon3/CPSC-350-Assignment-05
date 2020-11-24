@@ -12,7 +12,7 @@
    cout << "Hello" << endl << endl;
 
    cout << "creating BST\n";
-   BST myBST;
+   BST<int> myBST;
 
    cout << "INSERTING: 5\n";
    myBST.InsertNode(5);

@@ -14,11 +14,11 @@
  #include <string>
  #include <fstream>
 
-
+template <class x>
 class TreeNode
 {
   public:
-    TreeNode(int newKey)
+    TreeNode(x newKey)
     {
       left  = nullptr;
       right = nullptr;
@@ -33,7 +33,7 @@ class TreeNode
     }
 
 
-    int key; //data as well as key
+    x key; //data as well as key
     TreeNode *left;
     TreeNode *right;
   private:
