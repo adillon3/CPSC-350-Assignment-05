@@ -8,8 +8,9 @@
  #ifndef ASSIGN5_H_
  #define ASSIGN5_H_
 
- //#include "Person.h"
  #include "Student.h"
+ #include "Faculty.h"
+ #include "GenBST.h"
 
 
  #endif // ASSIGN5_H_

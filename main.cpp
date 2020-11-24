@@ -9,12 +9,25 @@
 
  int main()
  {
-
    cout << "Hello" << endl << endl;
 
-   Student myStudent(12345, "Travis", "McElroy", "Junior", "Stage Craft", 2.5, 67890);
+   cout << "creating BST\n";
+   BST myBST;
 
-   myStudent.PrintPerson(cout);
+   cout << "INSERTING: 5\n";
+   myBST.InsertNode(5);
+      cout << "INSERTING: 1\n";
+   myBST.InsertNode(1);
+      cout << "INSERTING: 10\n";
+   myBST.InsertNode(10);
+      cout << "INSERTING: 4\n";
+   myBST.InsertNode(4);
+      cout << "INSERTING: 6\n";
+   myBST.InsertNode(6);
+
+
+   cout << "INORDER\n\n";
+   myBST.InOrder();
 
    cout << "END\n\n";
    return 0;
