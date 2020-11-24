@@ -28,7 +28,7 @@ public:
   void SetLastName(string newLastName);
 
   //virtual methods
-  virtual void PrintPerson(ostream& oFile);
+  virtual void PrintPerson(ostream& oFile) = 0;
 protected:
     void PrintPersonAttributes(ostream& oFile);
 private:

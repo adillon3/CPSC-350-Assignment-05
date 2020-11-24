@@ -14,7 +14,8 @@
  class Faculty : public Person
  {
  public:
-  Faculty(int newID, string newFirstName, string newLastName, string newFacultyLevel, string newDepartment);
+  Faculty(int newID, string newFirstName, string newLastName,
+    string newFacultyLevel, string newDepartment, DoublyLinkedList<int> newAdviseesIDs);
   ~Faculty();
 
   //getters and setters
