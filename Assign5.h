@@ -11,7 +11,6 @@
  #include "Student.h"
  #include "Faculty.h"
  #include "GenBST.h"
-
-int GetMenuInput(const string initialMessage, const int numMenuOptions);
+ #include "SchoolDatabase.h"
 
  #endif // ASSIGN5_H_
