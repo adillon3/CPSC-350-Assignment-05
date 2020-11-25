@@ -16,9 +16,7 @@
    Student stu3(54321, "Griffin", "McElroy", "Freshmen", "Podcasting", 5.222, 67890);
 
 
-
-
-   cout << stu1;
+   stu1.PrintPerson(cout);
 
    cout << "END\n\n";
    return 0;

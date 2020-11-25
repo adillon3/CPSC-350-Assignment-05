@@ -50,12 +50,26 @@ void Faculty :: RemoveAdvisee(int oldAdvisee)
 
 
 //virtual methods
-void Faculty :: PrintPerson(ostream& oFile) const
+void Faculty :: PrintPerson(ostream& oFile)
 {
-  oFile << "NEED TO FIX THIS\n";
+  oFile << "------------------------------------\n";
+  oFile << "* Faculty *\n";
+  PrintPersonAttributes(oFile);
+  oFile << "------------------------------------\n";
+  oFile << "Level:   " << facultyLevel << endl;
+  oFile << "Dept:    " << department << endl;
+
+  oFile << "Advisees' IDs:\n";
+  adviseesIDsList.DisplayForwards(oFile);
+  //PrintAdvisees(oFile);
+
+  oFile << "------------------------------------\n\n";
 }
 /*
-ostream& operator<<(ostream& oFile, const & object person)
+void Faculty :: PrintAdvisees(ostream& oFile) const
 {
-  PrintPerson(oFile);
+  for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+  {
+    oFile << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+  }
 }*/

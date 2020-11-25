@@ -29,7 +29,7 @@ public:
 
 
   //virtual methods
-  void PrintPerson(ostream& oFile) const;
+  void PrintPerson(ostream& oFile);
   //friend ostream& operator<<(ostream& oFile, const & object person);
   //methods fom super
   /*

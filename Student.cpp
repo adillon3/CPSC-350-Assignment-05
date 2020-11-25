@@ -55,13 +55,14 @@ Student :: ~Student()
  }
 
  //virtual methods
- void Student :: PrintPerson(ostream& oFile) const
+ void Student :: PrintPerson(ostream& oFile)
  {
    oFile << "------------------------------------\n";
+   oFile << "* Student *\n";
    PrintPersonAttributes(oFile);
    oFile << "------------------------------------\n";
    oFile << "Level:   " << studentLevel << endl;
-   oFile << "Majpr:   " << major << endl;
+   oFile << "Major:   " << major << endl;
 
    oFile << showpoint << setprecision(3);//formating
    oFile << showpoint << "GPA:     " << gpa << endl;
