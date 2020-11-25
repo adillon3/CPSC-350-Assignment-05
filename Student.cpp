@@ -62,7 +62,11 @@ Student :: ~Student()
    oFile << "------------------------------------\n";
    oFile << "Level:   " << studentLevel << endl;
    oFile << "Majpr:   " << major << endl;
-   oFile << "GPA:     " << gpa << endl;
+
+   oFile << showpoint << setprecision(3);//formating
+   oFile << showpoint << "GPA:     " << gpa << endl;
+   oFile << noshowpoint << setprecision(6);//resetting formating
+
    oFile << "Advisor: " << advisorID << endl;
    oFile << "------------------------------------\n\n";
  }

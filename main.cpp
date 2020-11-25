@@ -11,9 +11,9 @@
  {
    cout << "Hello" << endl << endl;
 
-   Student stu1(12345, "Justin", "McElroy", "Senior", "Videotester", 2.0, 67890);
+   Student stu1(12345, "Justin", "McElroy", "Senior", "Videogame Testing", 2.0, 67890);
    Student stu2(12345, "Travis", "McElroy", "Junior", "Stagecraft", 4.3, 67890);
-   Student stu3(54321, "Griffin", "McElroy", "Freshmen", "Podcaster", 5.222, 67890);
+   Student stu3(54321, "Griffin", "McElroy", "Freshmen", "Podcasting", 5.222, 67890);
 
 
 
