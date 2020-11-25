@@ -28,10 +28,10 @@ public:
   void SetLastName(string newLastName);
 
 
-  virtual void PrintPerson(ostream& oFile) = 0;
+  virtual void PrintPerson(ostream& oFile) const = 0;
 
   //overloaded operators
-  //virtual friend ostream& operator<<(ostream& oFile, const & object);
+  friend ostream& operator<<(ostream& oFile, const Person& person);
   friend bool operator==(const Person& person1, const Person& person2);
   friend bool operator!=(const Person& person1, const Person& person2);
   friend bool operator>(const Person& person1, const Person& person2);
@@ -40,7 +40,7 @@ public:
   friend bool operator<=(const Person& person1, const Person& person2);
 
 protected:
-    void PrintPersonAttributes(ostream& oFile);
+    void PrintPersonAttributes(ostream& oFile) const;
 private:
 
   int    id;

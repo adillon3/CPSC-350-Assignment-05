@@ -50,7 +50,12 @@ void Faculty :: RemoveAdvisee(int oldAdvisee)
 
 
 //virtual methods
-void Faculty :: PrintPerson(ostream& oFile)
+void Faculty :: PrintPerson(ostream& oFile) const
 {
-  oFile << "YEET";
+  oFile << "NEED TO FIX THIS\n";
 }
+/*
+ostream& operator<<(ostream& oFile, const & object person)
+{
+  PrintPerson(oFile);
+}*/

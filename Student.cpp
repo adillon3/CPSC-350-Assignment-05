@@ -55,7 +55,7 @@ Student :: ~Student()
  }
 
  //virtual methods
- void Student :: PrintPerson(ostream& oFile)
+ void Student :: PrintPerson(ostream& oFile) const
  {
    oFile << "------------------------------------\n";
    PrintPersonAttributes(oFile);
@@ -66,3 +66,8 @@ Student :: ~Student()
    oFile << "Advisor: " << advisorID << endl;
    oFile << "------------------------------------\n\n";
  }
+ /*
+ ostream& operator<<(ostream& oFile, const & object persons)
+ {
+   PrintPerson(oFile);
+ }*/

@@ -18,7 +18,7 @@
 
 
 
-
+   cout << stu1;
 
    cout << "END\n\n";
    return 0;
