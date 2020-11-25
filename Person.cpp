@@ -50,3 +50,50 @@ void Person :: PrintPersonAttributes(ostream& oFile)
   oFile << "ID:   " << id << endl;
   oFile << "Name: " << lastName << ", " << firstName << endl;
 }
+
+
+//Friend functions
+bool operator==(const Person& person1, const Person& person2)
+{
+  if(person1.id == person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+bool operator!=(const Person& person1, const Person& person2)
+{
+  if(person1.id != person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+bool operator>(const Person& person1, const Person& person2)
+{
+  if(person1.id > person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+bool operator<(const Person& person1, const Person& person2)
+{
+  if(person1.id < person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}

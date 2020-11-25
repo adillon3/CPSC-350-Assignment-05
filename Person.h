@@ -27,8 +27,16 @@ public:
   void SetFirstName(string newFirstName);
   void SetLastName(string newLastName);
 
-  //virtual methods
+
   virtual void PrintPerson(ostream& oFile) = 0;
+
+  //overloaded operators
+  //virtual friend ostream& operator<<(ostream& oFile, const & object);
+  friend bool operator==(const Person& person1, const Person& person2);
+  friend bool operator!=(const Person& person1, const Person& person2);
+  friend bool operator>(const Person& person1, const Person& person2);
+  friend bool operator<(const Person& person1, const Person& person2);
+
 protected:
     void PrintPersonAttributes(ostream& oFile);
 private:

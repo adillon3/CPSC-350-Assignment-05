@@ -11,23 +11,14 @@
  {
    cout << "Hello" << endl << endl;
 
-   cout << "creating BST\n";
-   BST<int> myBST;
-
-   cout << "INSERTING: 5\n";
-   myBST.InsertNode(5);
-      cout << "INSERTING: 1\n";
-   myBST.InsertNode(1);
-      cout << "INSERTING: 10\n";
-   myBST.InsertNode(10);
-      cout << "INSERTING: 4\n";
-   myBST.InsertNode(4);
-      cout << "INSERTING: 6\n";
-   myBST.InsertNode(6);
+   Student stu1(12345, "Justin", "McElroy", "Senior", "Videotester", 2.0, 67890);
+   Student stu2(12345, "Travis", "McElroy", "Junior", "Stagecraft", 4.3, 67890);
+   Student stu3(54321, "Griffin", "McElroy", "Freshmen", "Podcaster", 5.222, 67890);
 
 
-   cout << "INORDER\n\n";
-   myBST.InOrder();
+
+
+
 
    cout << "END\n\n";
    return 0;
