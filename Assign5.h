@@ -12,5 +12,6 @@
  #include "Faculty.h"
  #include "GenBST.h"
 
+int GetMenuInput(const string initialMessage, const int numMenuOptions);
 
  #endif // ASSIGN5_H_
