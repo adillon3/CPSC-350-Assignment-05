@@ -97,3 +97,25 @@ bool operator<(const Person& person1, const Person& person2)
     return false;
   }
 }
+bool operator>=(const Person& person1, const Person& person2)
+{
+  if(person1.id >= person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+bool operator<=(const Person& person1, const Person& person2)
+{
+  if(person1.id <= person2.id)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}

@@ -36,6 +36,8 @@ public:
   friend bool operator!=(const Person& person1, const Person& person2);
   friend bool operator>(const Person& person1, const Person& person2);
   friend bool operator<(const Person& person1, const Person& person2);
+  friend bool operator>=(const Person& person1, const Person& person2);
+  friend bool operator<=(const Person& person1, const Person& person2);
 
 protected:
     void PrintPersonAttributes(ostream& oFile);
