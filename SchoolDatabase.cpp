@@ -231,6 +231,10 @@ void SchoolDatabase :: AddStudent()
   studentTree.InsertNode(newStudent);
 
   cout << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
+
+
+  studentTree.InOrder();
+
 }
 void SchoolDatabase :: DeleteStudent()
 {}

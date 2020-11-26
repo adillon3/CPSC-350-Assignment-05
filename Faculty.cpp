@@ -50,7 +50,7 @@ void Faculty :: RemoveAdvisee(int oldAdvisee)
 
 
 //virtual methods
-void Faculty :: PrintPerson(ostream& oFile)
+void Faculty :: PrintPerson(ostream& oFile) const
 {
   oFile << "------------------------------------\n";
   oFile << "* Faculty *\n";
@@ -60,7 +60,12 @@ void Faculty :: PrintPerson(ostream& oFile)
   oFile << "Dept:    " << department << endl;
 
   oFile << "Advisees' IDs:\n";
-  adviseesIDsList.DisplayForwards(oFile);
+
+  for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+  {
+    cout << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+  }
+
   //PrintAdvisees(oFile);
 
   oFile << "------------------------------------\n\n";

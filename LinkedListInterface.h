@@ -25,11 +25,11 @@ public:
   virtual DoublyLinkedListNode<x>* Search(x key) = 0;
   virtual DoublyLinkedListNode<x>* GetFront() = 0;
   virtual DoublyLinkedListNode<x>* GetBack() = 0;
-  virtual void DisplayForwards(ostream& oFile) = 0;
-  virtual void DisplayBackwards(ostream& oFile) = 0;
-  virtual bool IsEmpty() = 0;
-  virtual int GetSize() = 0;
-  virtual x GetValueAtIndex(int index) = 0;
+  virtual void DisplayForwards(ostream& oFile) const = 0;
+  virtual void DisplayBackwards(ostream& oFile) const = 0;
+  virtual bool IsEmpty() const = 0;
+  virtual int GetSize() const = 0;
+  virtual x GetValueAtIndex(int index) const = 0;
 
 };
 

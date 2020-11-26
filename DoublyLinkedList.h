@@ -181,7 +181,7 @@ public:
     return tail;
   }
 
-  void DisplayForwards(ostream& oFile)
+  void DisplayForwards(ostream& oFile) const
   {
     oFile << "Forwards: ";
     if(size <= 0)
@@ -202,7 +202,7 @@ public:
       oFile << tail -> data;
     }
   }
-  void DisplayBackwards(ostream& oFile)
+  void DisplayBackwards(ostream& oFile) const
   {
     oFile << "Backwards: ";
 
@@ -225,7 +225,7 @@ public:
       oFile << head -> data;
     }
   }
-  bool IsEmpty()
+  bool IsEmpty() const
   {
     if(size == 0)
     {
@@ -234,11 +234,11 @@ public:
 
     return false;
   }
-  int GetSize()
+  int GetSize() const
   {
     return size;
   }
-  x GetValueAtIndex(int index)
+  x GetValueAtIndex(int index) const
   {
     if(index >= size)
     {

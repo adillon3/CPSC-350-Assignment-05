@@ -58,7 +58,7 @@ Student :: ~Student()
  }
 
  //virtual methods
- void Student :: PrintPerson(ostream& oFile)
+ void Student :: PrintPerson(ostream& oFile) const
  {
    oFile << "------------------------------------\n";
    oFile << "* Student *\n";

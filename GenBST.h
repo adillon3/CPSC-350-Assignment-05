@@ -93,7 +93,7 @@ public:
     }
     return true;
   }
-  bool deleteNode(x value)
+  bool DeleteNode(x value)
   {
     if(IsEmpty()) // root is null
     {

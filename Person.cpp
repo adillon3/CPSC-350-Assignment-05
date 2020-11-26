@@ -43,7 +43,7 @@ void Person :: SetLastName(string newLastName)
 }
 
 //virtual methods
-void Person :: PrintPerson(ostream& oFile)
+void Person :: PrintPerson(ostream& oFile) const
 {}
 
 //protected methods
@@ -56,11 +56,10 @@ void Person :: PrintPersonAttributes(ostream& oFile) const
 
 
 //Friend functions
-/*
 ostream& operator<<(ostream& oFile, const Person& person)
 {
   person.PrintPerson(oFile);
-}*/
+}
 bool operator==(const Person& person1, const Person& person2)
 {
   if(person1.id == person2.id)

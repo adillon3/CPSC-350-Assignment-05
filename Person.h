@@ -30,7 +30,7 @@ public:
   void SetLastName(string newLastName);
 
 
-  virtual void PrintPerson(ostream& oFile) = 0;
+  virtual void PrintPerson(ostream& oFile) const = 0;
 
   //overloaded operators
   friend ostream& operator<<(ostream& oFile, const Person& person);
