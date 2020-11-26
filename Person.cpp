@@ -7,6 +7,8 @@
 
 #include "Person.h"
 
+Person :: Person()
+{}
 
 Person :: Person(int newID, string newFirstName, string newLastName)
 {

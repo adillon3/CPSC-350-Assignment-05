@@ -18,6 +18,7 @@
 class Person
 {
 public:
+  Person();
   Person(int newID, string newFirstName, string newLastName);
   ~Person();
 

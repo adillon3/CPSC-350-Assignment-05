@@ -15,13 +15,41 @@
  class SchoolDatabase
  {
  public:
+   SchoolDatabase();
+   ~SchoolDatabase();
+
    void RunDatabase();
 
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
 
-
+   //Main methods for menu operations
+   void PrintStudentDatabase(); //Accending ID
+   void PrintFacultyDatabase(); //Accending ID
+   void PrintStudent(); //Prompt for Student ID and call helper method
+   void PrintFaculty(); //Prompt for Student ID and call helper method
+   void PrintStudentAdvisor(); //Promprt for ID, calls helper to search and print
+   void PrintFacultyAdvisees(); //Promprt for ID, calls helper to search and print
+   void AddStudent();
+   void DeleteStudent(); //Given ID
+   void AddFaculty();
+   void DeleteFaculty(); //Given ID
+   void ChangeStudentAdvisor(); //Prompt for student id and the new faculty id
+   void RemoveAdvisee(); //Prompt for facilty ID and student ID
+   void Rollback(); //Remove last action from the stack and undo last method
 
  private:
+   int GenerateStudentID();
+   int GenerateFacultyID();
+
+   Student* SearchTreeForStudentID(int ID);
+   Faculty* SearchTreeForFacultyID();
+
+
+   GenBST<Student> studentTree;
+   GenBST<Student> facultyTree;
+
+
+
    const string MAIN_MENU = "1.  Print all students and their information (sorted by ascending id #)\n"
                             "2.  Print all faculty and their information (sorted by ascending id #)\n"
                             "3.  Find and display student information given the students id\n"
@@ -39,12 +67,5 @@
                             "Choice: ";
    const int NUM_MAIN_MENU_OPTIONS = 14;
  };
-
-
-
-
-
-
-
 
  #endif // SCHOOLDATABASE_H_

@@ -7,18 +7,12 @@
 
  #include "Assign5.h"
 
-
  int main()
  {
 
    SchoolDatabase myDatabase;
 
    myDatabase.RunDatabase();
-
-
-
-
-
 
 //TEST DATA
 /*
@@ -29,6 +23,6 @@
 
    stu1.PrintPerson(cout);*/
 
-   cout << "END\n\n";
+   
    return 0;
  }

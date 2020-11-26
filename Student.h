@@ -13,6 +13,7 @@
 class Student : public Person
 {
 public:
+  Student();
   Student(int newID, string newFirstName, string newLastName, string newStudentLevel,
     string newMajor, double newGPA, int newAdvisorID);
   ~Student();

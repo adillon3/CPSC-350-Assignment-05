@@ -11,14 +11,14 @@
 
 
 template <class x>
-class BST
+class GenBST
 {
 public:
-  BST()
+  GenBST()
   {
     root = nullptr;
   }
-  ~BST()
+  ~GenBST()
   {
     //iterate and delete each node
     //call delete and use traversal method

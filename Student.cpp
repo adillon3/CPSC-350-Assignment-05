@@ -7,6 +7,9 @@
 
  #include "Student.h"
 
+Student :: Student()
+{}
+
 Student :: Student(int newID, string newFirstName, string newLastName, string newStudentLevel,
    string newMajor, double newGPA, int newAdvisorID) : Person(newID, newFirstName, newLastName)
  {
