@@ -17,5 +17,14 @@
   }
   Transaction :: ~Transaction()
   {
+    delete person;
+  }
 
+  Person* GetPerson()
+  {
+    return person;
+  }
+  TransactionType GetType()
+  {
+    return type;
   }

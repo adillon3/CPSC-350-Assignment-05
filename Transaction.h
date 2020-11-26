@@ -25,11 +25,13 @@ public:
   Transaction(Person* newPerson, TransactionType newType);
   ~Transaction();
 
+  Person* GetPerson();
+  TransactionType GetType();
 
 
 private:
-  TransactionType type;
   Person* person;
+  TransactionType type;
 };
 
  #endif /* TRANSACTION_H_ */
