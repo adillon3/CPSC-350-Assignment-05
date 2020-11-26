@@ -15,6 +15,7 @@
  {
  public:
   Faculty();
+  Faculty(int newID);
   Faculty(int newID, string newFirstName, string newLastName,
     string newFacultyLevel, string newDepartment, DoublyLinkedList<int> newAdviseesIDsList);
   ~Faculty();

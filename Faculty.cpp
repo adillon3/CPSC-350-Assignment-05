@@ -9,6 +9,11 @@
 
 Faculty :: Faculty()
 {}
+Faculty :: Faculty(int newID) : Person(newID, " ", " ")
+{
+  facultyLevel = " ";
+  department = " ";
+}
 Faculty :: Faculty(int newID, string newFirstName, string newLastName, string newFacultyLevel,
   string newDepartment, DoublyLinkedList<int> newAdviseesIDsList) : Person(newID, newFirstName, newLastName)
 {

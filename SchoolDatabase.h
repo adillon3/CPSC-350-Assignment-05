@@ -44,27 +44,31 @@
    int GenerateStudentID();
    int GenerateFacultyID();
 
-   Student* SearchTreeForStudentID(int ID);
-   Faculty* SearchTreeForFacultyID();
+   Student* SearchTreeForStudentID(int searchID);
+   Faculty* SearchTreeForFacultyID(int searchID);
+
+   void SerializeStudents();
+   void SerializeFaculty();
+
+   void DeserializeStudents();
+   void DeserializeFaculty();
 
 
    GenBST<Student> studentTree;
    GenBST<Faculty> facultyTree;
 
-
-
-   const string MAIN_MENU = "1.  Print all students and their information (sorted by ascending id #)\n"
-                            "2.  Print all faculty and their information (sorted by ascending id #)\n"
-                            "3.  Find and display student information given the students id\n"
-                            "4.  Find and display faculty information given the faculty id\n"
-                            "5.  Given a student’s id, print the name and info of their faculty advisor\n"
-                            "6.  Given a faculty id, print ALL the names and info of his/her advisees\n"
+   const string MAIN_MENU = "1.  Print all students and their information\n"
+                            "2.  Print all faculty and their information\n"
+                            "3.  Find student from ID\n"
+                            "4.  Find faculty from ID\n"
+                            "5.  Find student from ID and their advisor\n"
+                            "6.  Find faculty from ID and their advisees\n"
                             "7.  Add a new student\n"
-                            "8.  Delete a student given the id\n"
+                            "8.  Delete a student from their ID\n"
                             "9.  Add a new faculty member\n"
-                            "10. Delete a faculty member given the id\n"
-                            "11. Change a student’s advisor given the student id and the new faculty id\n"
-                            "12. Remove an advisee from a faculty member given the id\n"
+                            "10. Delete a faculty from their ID\n"
+                            "11. Change a student’s advisor from their IDs\n"
+                            "12. Remove an advisee from a faculty member from their IDs\n"
                             "13. Rollback\n"
                             "14. Exit\n"
                             "Choice: ";

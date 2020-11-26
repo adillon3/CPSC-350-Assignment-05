@@ -23,6 +23,6 @@
 
    stu1.PrintPerson(cout);*/
 
-   
+
    return 0;
  }

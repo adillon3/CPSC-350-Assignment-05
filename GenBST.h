@@ -284,6 +284,22 @@ public:
   }
 
 
+  void SerializeGenBST(ostream& oFile)
+  {
+    SerializeGenBSTHelper(oFile, root);
+  }
+  void SerializeGenBSTHelper(ostream& oFile, TreeNode<x>* parentNode)
+  {
+    if(parentNode == nullptr)
+    {
+      return;
+    }
+
+    oFile << parentNode -> key;
+    SerializeGenBSTHelper(oFile, parentNode -> left);
+    SerializeGenBSTHelper(oFile, parentNode -> right);
+  }
+
 private:
   //traversals
     void InOrderHelper(TreeNode<x>* n)

@@ -68,7 +68,7 @@ void SchoolDatabase :: RunDatabase()
         AddFaculty();
         break;
       case 10:
-        //DeleteFaculty();
+        DeleteFaculty();
         break;
       case 11:
         //ChangeStudentAdvisor();
@@ -84,9 +84,8 @@ void SchoolDatabase :: RunDatabase()
     }
   } while(menuChoice != NUM_MAIN_MENU_OPTIONS);
 
-
-  //PrintStudentTreeToFile();
-  //PrintFacultyTreeToFile();
+  SerializeStudents();
+  SerializeFaculty();
 
   cout << "END\n\n";
 }
@@ -261,7 +260,6 @@ void SchoolDatabase :: AddFaculty()
   DoublyLinkedList<int> newAdviseesIDsList;
 
 
-
   cin.ignore(100000000, '\n');
 
   cout << "Please enter faculty memeber data:\n";
@@ -288,6 +286,42 @@ void SchoolDatabase :: AddFaculty()
 }
 void SchoolDatabase :: DeleteFaculty()
 {
+  bool valid = false;
+  int facultyToDelete;
+
+  do
+  {
+    cout << "Enter the ID of the Faculty member to remove: ";
+    cin >> facultyToDelete;
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100000000, '\n');
+      cout << "\nSorry, please enter a valid numeric Faculty ID.\n\n";
+
+      valid = false;
+    }
+    else if(facultyToDelete > 0)
+    {
+      valid = true;
+    }
+    else
+    {
+      cout << "\nSorry, please enter a positive value.\n\n";
+      valid = false;
+    }
+
+  } while(!valid);
+
+  if(facultyTree.DeleteNode(facultyToDelete))
+  {
+    cout << facultyToDelete << " was removed from the system\n";
+  }
+  else
+  {
+    cout << facultyToDelete << " could not be found in the system.\n";
+  }
+
 
 }
 void SchoolDatabase :: ChangeStudentAdvisor()
@@ -390,4 +424,34 @@ int SchoolDatabase ::  GenerateFacultyID()
   } while(!valid);
 
   return randomValue;
+}
+
+void SchoolDatabase :: SerializeStudents()
+{
+  ofstream oFile;
+
+  oFile.open("studentTable");
+
+  studentTree.SerializeGenBST(oFile);
+
+  oFile.close();
+}
+void SchoolDatabase :: SerializeFaculty()
+{
+  ofstream oFile;
+
+  oFile.open("facultyTable");
+
+  facultyTree.SerializeGenBST(oFile);
+
+  oFile.close();
+}
+
+void SchoolDatabase :: DeserializeStudents()
+{
+
+}
+void SchoolDatabase :: DeserializeFaculty()
+{
+
 }
