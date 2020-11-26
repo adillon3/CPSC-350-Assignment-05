@@ -7,7 +7,8 @@
 
 #include "Faculty.h"
 
-
+Faculty :: Faculty()
+{}
 Faculty :: Faculty(int newID, string newFirstName, string newLastName, string newFacultyLevel,
   string newDepartment, DoublyLinkedList<int> newAdviseesIDsList) : Person(newID, newFirstName, newLastName)
 {
@@ -61,12 +62,17 @@ void Faculty :: PrintPerson(ostream& oFile) const
 
   oFile << "Advisees' IDs:\n";
 
-  for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+  if(adviseesIDsList.GetSize())
   {
-    cout << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+    oFile << "No Advisees\n";
   }
-
-  //PrintAdvisees(oFile);
+  else
+  {
+    for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+    {
+      oFile << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+    }
+  }
 
   oFile << "------------------------------------\n\n";
 }

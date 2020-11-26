@@ -20,11 +20,11 @@
 
    void RunDatabase();
 
-   int GetMenuInput(const string initialMessage, const int numMenuOptions);
+
 
    //Main methods for menu operations
-   void PrintStudentDatabase(); //Accending ID
-   void PrintFacultyDatabase(); //Accending ID
+   void PrintStudentDatabase();
+   void PrintFacultyDatabase();
    void PrintStudent(); //Prompt for Student ID and call helper method
    void PrintFaculty(); //Prompt for Student ID and call helper method
    void PrintStudentAdvisor(); //Promprt for ID, calls helper to search and print
@@ -38,6 +38,9 @@
    void Rollback(); //Remove last action from the stack and undo last method
 
  private:
+   int GetMenuInput(const string initialMessage, const int numMenuOptions);
+   bool GetYesOrNoInput(const string initialMessage);
+
    int GenerateStudentID();
    int GenerateFacultyID();
 
@@ -46,7 +49,7 @@
 
 
    GenBST<Student> studentTree;
-   GenBST<Student> facultyTree;
+   GenBST<Faculty> facultyTree;
 
 
 

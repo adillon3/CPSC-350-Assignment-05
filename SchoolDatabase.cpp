@@ -41,10 +41,10 @@ void SchoolDatabase :: RunDatabase()
     switch(menuChoice)
     {
       case 1:
-        //PrintStudentDatabase();
+        PrintStudentDatabase();
         break;
       case 2:
-        //PrintFacultyDatabase();
+        PrintFacultyDatabase();
         break;
       case 3:
         //PrintStudent();
@@ -65,7 +65,7 @@ void SchoolDatabase :: RunDatabase()
         //DeleteStudent();
         break;
       case 9:
-        //AddFaculty();
+        AddFaculty();
         break;
       case 10:
         //DeleteFaculty();
@@ -121,23 +121,35 @@ int SchoolDatabase :: GetMenuInput(const string initialMessage, const int numMen
   } while(!valid);
 }
 
-
-
 void SchoolDatabase :: PrintStudentDatabase()
-{}
+{
+  cout << "Current Students\n";
+  studentTree.InOrder();
+}
 void SchoolDatabase :: PrintFacultyDatabase()
-{}
+{
+  cout << "School Staff\n";
+  facultyTree.InOrder();
+}
 void SchoolDatabase :: PrintStudent()
-{}
+{
+
+}
 void SchoolDatabase :: PrintFaculty()
-{}
+{
+
+}
 void SchoolDatabase :: PrintStudentAdvisor()
-{}
+{
+
+}
 void SchoolDatabase :: PrintFacultyAdvisees()
-{}
+{
+
+}
 void SchoolDatabase :: AddStudent()
 {
-  bool valid = false;;
+  bool valid = false;
 
   int    newID = GenerateStudentID();
   string newFirstName;
@@ -231,25 +243,105 @@ void SchoolDatabase :: AddStudent()
   studentTree.InsertNode(newStudent);
 
   cout << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
-
-
-  studentTree.InOrder();
-
 }
 void SchoolDatabase :: DeleteStudent()
-{}
+{
+
+}
 void SchoolDatabase :: AddFaculty()
-{}
+{
+  bool valid = false;;
+
+  int    newID = GenerateFacultyID();
+  string newFirstName;
+  string newLastName;
+  string newFacultyLevel;
+  string newDepartment;
+  string newAdviseeID;
+  DoublyLinkedList<int> newAdviseesIDsList;
+
+
+
+  cin.ignore(100000000, '\n');
+
+  cout << "Please enter faculty memeber data:\n";
+  cout << "Faculty memeber's first name: ";
+  getline(cin, newFirstName);
+
+  cout << "Faculty memeber's last name: ";
+  getline(cin, newLastName);
+
+  cout << "Faculty memeber's level: ";
+  getline(cin, newFacultyLevel);
+
+  cout << "Faculty memeber's department: ";
+  getline(cin, newDepartment);
+
+  Faculty newFaculty(newID, newFirstName, newLastName, newFacultyLevel,
+    newDepartment, newAdviseesIDsList);
+
+
+  facultyTree.InsertNode(newFaculty);
+
+  cout << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
+
+}
 void SchoolDatabase :: DeleteFaculty()
-{}
+{
+
+}
 void SchoolDatabase :: ChangeStudentAdvisor()
-{}
+{
+
+}
 void SchoolDatabase :: RemoveAdvisee()
-{}
+{
+
+}
 void SchoolDatabase ::  Rollback()
-{}
+{
+
+}
 
 
+
+
+bool GetYesOrNoInput(const string initialMessage)
+{
+  char gameChoice;
+  bool invalidInput = true;
+
+  cout << initialMessage << endl;
+
+  do
+  {
+    cout << "Please enter either \'Y\' for \"Yes\" or \'N\' for \"No\": ";
+    cin.get(gameChoice);
+    cin.ignore(100000000, '\n');
+    cout << endl;
+    gameChoice = toupper(gameChoice);
+
+    if(gameChoice == 'Y' || gameChoice == 'N')
+    {
+      invalidInput = false;
+    }
+    else
+    {
+      invalidInput = true;
+      cout << "Sorry, \'" << gameChoice << "\' is invalid.\n";
+    }
+  }while(invalidInput);
+
+  if(gameChoice == 'Y')
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+
+}
 
 int SchoolDatabase ::  GenerateStudentID()
 {
@@ -277,5 +369,25 @@ int SchoolDatabase ::  GenerateStudentID()
 }
 int SchoolDatabase ::  GenerateFacultyID()
 {
+  bool valid = false;
+  int randomValue;
 
+  do
+  {
+    //genereate number
+    randomValue = rand() % 10000 + 70000;
+
+    //Check if number is already in tree
+    /*
+    if()
+    {
+
+    }*/
+
+    valid = true;
+
+
+  } while(!valid);
+
+  return randomValue;
 }
