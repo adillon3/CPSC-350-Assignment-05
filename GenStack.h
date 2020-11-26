@@ -2,7 +2,7 @@
  * Andrew Dillon
  * 2382400
  * CPSC 350
- * Assignment 03
+ * Assignment 05
  *******************************/
 
  #ifndef GENSTACK_H_

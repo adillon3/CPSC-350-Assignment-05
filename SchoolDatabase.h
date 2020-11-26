@@ -11,6 +11,8 @@
  #include "Student.h"
  #include "Faculty.h"
  #include "GenBST.h"
+ #include "GenStack.h"
+ #include "Transaction.h"
 
  class SchoolDatabase
  {
@@ -38,6 +40,7 @@
    void Rollback(); //Remove last action from the stack and undo last method
 
  private:
+   //Private Methods
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
    bool GetYesOrNoInput(const string initialMessage);
 
@@ -53,9 +56,11 @@
    void DeserializeStudents();
    void DeserializeFaculty();
 
-
+   //Data fields
    GenBST<Student> studentTree;
    GenBST<Faculty> facultyTree;
+
+   GenStack<Transaction> transactionStack;
 
    const string MAIN_MENU = "1.  Print all students and their information\n"
                             "2.  Print all faculty and their information\n"
