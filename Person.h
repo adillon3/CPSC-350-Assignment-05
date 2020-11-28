@@ -43,11 +43,13 @@ public:
 
 protected:
     void PrintPersonAttributes(ostream& oFile) const;
-private:
+    int    id;
+    string firstName;
+    string lastName;
 
-  int    id;
-  string firstName;
-  string lastName;
+private:
+  //n/a
+
 };
 
  #endif // PERSON_H_

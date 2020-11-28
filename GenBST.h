@@ -223,7 +223,6 @@ public:
      return successor;
 
   }
-
   bool IsEmpty()
   {
     if(root == nullptr)

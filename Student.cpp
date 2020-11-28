@@ -10,6 +10,17 @@
 Student :: Student()
 {}
 
+Student :: Student(int newID)
+{
+  id = newID;
+  firstName = " ";
+  lastName = " ";
+  studentLevel = " ";
+  major = "";
+  gpa = 0;
+  advisorID = 0;
+}
+
 Student :: Student(int newID, string newFirstName, string newLastName, string newStudentLevel,
    string newMajor, double newGPA, int newAdvisorID) : Person(newID, newFirstName, newLastName)
  {

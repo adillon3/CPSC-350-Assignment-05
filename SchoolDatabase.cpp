@@ -10,7 +10,7 @@
 SchoolDatabase :: SchoolDatabase()
 {
   /*
-  if(StudentFile && FacultyFile)
+  if(CheckFileNameValid(studentFile) && CheckFileNameValid(FacultyFile))
   {
     DeserializeStudents();
     DeserializeFaculty();
@@ -272,8 +272,7 @@ void SchoolDatabase :: DeleteStudent()
   } while(!valid);
 
 
-  Student studentToDelete(studentIDToDelete, " ", " ", " ",
-    "", 0, 0);
+  Student studentToDelete(studentIDToDelete);
 
   if(studentTree.DeleteNode(studentToDelete))
   {
@@ -437,20 +436,24 @@ int SchoolDatabase ::  GenerateStudentID()
   bool valid = false;
   int randomValue;
 
+  srand(time(0));
+
   do
   {
-    //genereate number
+    //genereate random 6xxxx number
     randomValue = rand() % 10000 + 60000;
 
     //Check if number is already in tree
-    /*
-    if()
+    Student newStudent(randomValue);
+
+    if(studentTree.SearchNode(newStudent))
     {
-
-    }*/
-
-    valid = true;
-
+      valid = false;
+    }
+    else
+    {
+      valid = true;
+    }
 
   } while(!valid);
 
@@ -461,17 +464,24 @@ int SchoolDatabase ::  GenerateFacultyID()
   bool valid = false;
   int randomValue;
 
+  srand(time(0));
+
   do
   {
-    //genereate number
+    //genereate random 7xxxx number
     randomValue = rand() % 10000 + 70000;
 
     //Check if number is already in tree
-    /*
-    if()
-    {
+    Faculty newFaculty(randomValue);
 
-    }*/
+    if(facultyTree.SearchNode(newFaculty))
+    {
+      valid = false;
+    }
+    else
+    {
+      valid = true;
+    }
 
     valid = true;
 
