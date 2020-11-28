@@ -20,8 +20,7 @@ public:
   }
   ~GenBST()
   {
-    //iterate and delete each node
-    //call delete and use traversal method
+    DeleteSubTree(root);
   }
 
   void InsertNode(x value)
@@ -327,6 +326,18 @@ private:
         PreOrderHelper(n -> left);
         PreOrderHelper(n -> right);
       }
+    }
+
+    void DeleteSubTree(TreeNode<x>* n)
+    {
+      if(n == nullptr)
+      {
+        return;
+      }
+
+      DeleteSubTree(n -> left);
+      DeleteSubTree(n -> right);
+      delete n;
     }
 
 
