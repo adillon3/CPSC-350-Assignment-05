@@ -136,7 +136,7 @@ void SchoolDatabase :: PrintFacultyDatabase()
   cout << "School Staff\n";
   if(facultyTree.IsEmpty())
   {
-    cout << "\Faculty Database is Empty\n\n\n";
+    cout << "\nFaculty Database is Empty\n\n\n";
   }
   else
   {

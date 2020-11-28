@@ -67,9 +67,9 @@ void Faculty :: PrintPerson(ostream& oFile) const
 
   oFile << "Advisees' IDs:\n";
 
-  if(adviseesIDsList.GetSize())
+  if(adviseesIDsList.IsEmpty())
   {
-    oFile << "No Advisees\n";
+    oFile << " - No Advisees Found\n";
   }
   else
   {
