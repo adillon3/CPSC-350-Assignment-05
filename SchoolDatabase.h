@@ -22,8 +22,6 @@
 
    void RunDatabase();
 
-
-
    //Main methods for menu operations
    void PrintStudentDatabase();
    void PrintFacultyDatabase();
@@ -42,6 +40,7 @@
  private:
    //Private Methods
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
+   bool CheckFileNameValid(string& fileName);
    bool GetYesOrNoInput(const string initialMessage);
 
    int GenerateStudentID();

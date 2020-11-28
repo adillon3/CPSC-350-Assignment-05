@@ -20,11 +20,11 @@
     delete person;
   }
 
-  Person* GetPerson()
+  Person* Transaction :: GetPerson()
   {
     return person;
   }
-  TransactionType GetType()
+  TransactionType Transaction :: GetType()
   {
     return type;
   }

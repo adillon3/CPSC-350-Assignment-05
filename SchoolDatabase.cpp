@@ -12,12 +12,10 @@ SchoolDatabase :: SchoolDatabase()
   /*
   if(StudentFile && FacultyFile)
   {
-    build from file
+    DeserializeStudents();
+    DeserializeFaculty();
   }
-  else
-  {
-    empty file
-  }*/
+  */
 }
 SchoolDatabase :: ~SchoolDatabase()
 {
@@ -62,7 +60,7 @@ void SchoolDatabase :: RunDatabase()
         AddStudent();
         break;
       case 8:
-        //DeleteStudent();
+        DeleteStudent();
         break;
       case 9:
         AddFaculty();
@@ -241,11 +239,50 @@ void SchoolDatabase :: AddStudent()
 
   studentTree.InsertNode(newStudent);
 
-  cout << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
+  cout << endl << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
 }
 void SchoolDatabase :: DeleteStudent()
 {
+  bool valid = false;
+  int studentIDToDelete;
 
+
+  do
+  {
+    cout << "Enter the ID of the Student to remove: ";
+    cin >> studentIDToDelete;
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100000000, '\n');
+      cout << "\nSorry, please enter a valid numeric Student ID.\n\n";
+
+      valid = false;
+    }
+    else if(studentIDToDelete > 0)
+    {
+      valid = true;
+    }
+    else
+    {
+      cout << "\nSorry, please enter a positive value.\n\n";
+      valid = false;
+    }
+
+  } while(!valid);
+
+
+  Student studentToDelete(studentIDToDelete, " ", " ", " ",
+    "", 0, 0);
+
+  if(studentTree.DeleteNode(studentToDelete))
+  {
+    cout << studentIDToDelete << " was removed from the system\n";
+  }
+  else
+  {
+    cout << studentIDToDelete << " could not be found in the system.\n";
+  }
 }
 void SchoolDatabase :: AddFaculty()
 {
@@ -321,8 +358,6 @@ void SchoolDatabase :: DeleteFaculty()
   {
     cout << facultyToDelete << " could not be found in the system.\n";
   }
-
-
 }
 void SchoolDatabase :: ChangeStudentAdvisor()
 {
@@ -338,7 +373,27 @@ void SchoolDatabase ::  Rollback()
 }
 
 
+bool CheckFileNameValid(string& fileName)
+{
+  ifstream inFile;
+  bool valid = false;
 
+  inFile.open(fileName.c_str());
+
+  //check if file exists
+  if(inFile)
+  {
+    valid = true; //is valid
+  }
+  else
+  {
+    valid = false; //repeat loop
+  }
+
+  inFile.close();
+
+  return valid;
+}
 
 bool GetYesOrNoInput(const string initialMessage)
 {
