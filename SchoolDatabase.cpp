@@ -121,12 +121,27 @@ int SchoolDatabase :: GetMenuInput(const string initialMessage, const int numMen
 void SchoolDatabase :: PrintStudentDatabase()
 {
   cout << "Current Students\n";
-  studentTree.InOrder();
+
+  if(studentTree.IsEmpty())
+  {
+    cout << "\nStudent Database is Empty\n\n\n";
+  }
+  else
+  {
+    studentTree.InOrder();
+  }
 }
 void SchoolDatabase :: PrintFacultyDatabase()
 {
   cout << "School Staff\n";
-  facultyTree.InOrder();
+  if(facultyTree.IsEmpty())
+  {
+    cout << "\Faculty Database is Empty\n\n\n";
+  }
+  else
+  {
+    facultyTree.InOrder();
+  }
 }
 void SchoolDatabase :: PrintStudent()
 {
