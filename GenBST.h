@@ -338,6 +338,7 @@ private:
       DeleteSubTree(n -> left);
       DeleteSubTree(n -> right);
       delete n;
+      n == nullptr;
     }
 
 

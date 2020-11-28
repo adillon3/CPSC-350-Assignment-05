@@ -25,11 +25,11 @@ class TreeNode
       key   = newKey;
     }
     ~TreeNode()
-    {
+    {/*
       delete left;
       delete right;
       left  = nullptr;
-      right = nullptr;
+      right = nullptr;*/
     }
 
 
