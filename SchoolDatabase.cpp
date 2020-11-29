@@ -527,7 +527,7 @@ void SchoolDatabase :: SerializeFaculty()
 
   oFile.open("facultyTable");
 
-  facultyTree.SerializeGenBST(oFile);
+  facultyTree.SerializeFacultyBST(oFile);
 
   oFile.close();
 }

@@ -10,8 +10,8 @@
 
  #include "Student.h"
  #include "Faculty.h"
- #include "GenBST.h"
  #include "StudentBST.h"
+ #include "FacultyBST.h"
  #include "GenStack.h"
  #include "Transaction.h"
 
@@ -58,7 +58,7 @@
 
    //Data fields
    StudentBST studentTree;
-   GenBST<Faculty> facultyTree;
+   FacultyBST facultyTree;
 
    GenStack<Transaction> transactionStack;
 

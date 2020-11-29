@@ -42,6 +42,8 @@
   void SetFirstName(string newFirstName);
   void SetLastName(string newLastName);*/
 
+  void SerializeFaculty(ostream& oFile);
+
  private:
   static int makeFacultyID();
   void PrintAdvisees(ostream& oFile);

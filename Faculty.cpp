@@ -81,11 +81,21 @@ void Faculty :: PrintPerson(ostream& oFile) const
 
   oFile << "------------------------------------\n\n";
 }
-/*
-void Faculty :: PrintAdvisees(ostream& oFile) const
+
+
+void Faculty :: SerializeFaculty(ostream& oFile)
 {
-  for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+  oFile << id << endl;
+  oFile << firstName << endl;
+  oFile << lastName << endl;
+  oFile << facultyLevel << endl;
+  oFile << department << endl;
+
+  for(int i = 0; adviseesIDsList.GetSize(); ++i)
   {
-    oFile << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+    oFile << adviseesIDsList.GetValueAtIndex(i) << endl;
   }
-}*/
+
+
+  oFile << endl; // extra space to have seperation between students
+}
