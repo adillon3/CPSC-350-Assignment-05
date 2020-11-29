@@ -61,7 +61,7 @@ void SchoolDatabase :: RunDatabase()
         PrintFacultyFromID();
         break;
       case 5:
-        //PrintStudentAdvisor();
+        PrintStudentAdvisor();
         break;
       case 6:
         //PrintFacultyAdvisees();
@@ -213,7 +213,38 @@ void SchoolDatabase :: PrintFacultyFromID()
 }
 void SchoolDatabase :: PrintStudentAdvisor()
 {
+  int studentID;
+  //promt user for student ID
 
+  cout << "Please enter the ID number of the student whose advisor you would like to find: ";
+  cin  >> studentID;
+  if(cin.fail())
+  {
+    cin.clear();
+    cin.ignore(100000000, '\n');
+    cout << "\nSorry, non numeric input was recieved.\nReturning to main menu...\n\n";
+
+    return;
+  }//END if(cin.fail())
+
+  Student searchStudent(studentID);
+
+  TreeNode<Student>* tempStudentNode = studentTree.ReturnPointerToNode(searchStudent);
+
+  if(tempStudentNode != nullptr)
+  {
+    /*cout << "The adviosr for " << studentID
+         << "[" << tempStudentNode  -> key.GetFirstName() << " "
+         << tempStudentNode  -> key.GetLastName() << " is " */
+
+    //cout << tempStudentNode  -> key;
+
+    cerr << "GET FACULTY DATA from FAULTYTREE\n\n";
+  }
+  else
+  {
+    cout << "Sorry, no student was found with the ID number: " << studentID << endl << endl;
+  }
 }
 void SchoolDatabase :: PrintFacultyAdvisees()
 {
