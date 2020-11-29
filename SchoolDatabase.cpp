@@ -20,7 +20,7 @@ SchoolDatabase :: SchoolDatabase()
 
 
 
-//  DeserializeStudents("studentFile");
+  DeserializeStudents("studentFile");
 }
 SchoolDatabase :: ~SchoolDatabase()
 {
@@ -534,30 +534,39 @@ void SchoolDatabase :: SerializeFaculty()
 
 void SchoolDatabase :: DeserializeStudents(string fileName)
 {
-  string dummyString;
-  char   dummyChar;
-  string newIDstring;
-  int    newIDint;
+  cerr << "**************Entering DeserializeStudents\n\n";
+
+
+  int    newID;
   string newFirstName;
   string newLastName;
   string newStudentLevel;
   string newMajor;
-  string newGPAstring;
-  float  newGPAfloat;
-  string newAdvisorString;
-  int    newAdvisorInt;
-
+  float  newGPA;
+  int    newAdvisorID;
+  string dummyString;
 
   ifstream inFile;
 
   inFile.open("studentTable");
 
+  if(inFile.is_open())
+  {
+    cerr << "OPEN";
+  }
+  else
+  {
+    cerr << "CLOSED";
+  }
+  cerr << endl << endl;
+
 
   while(true)
   {
-      /*
-    //first "*********..." line
-    getline(inFile, dummyString);
+    cerr << "ENTERING WHILE\n\n";
+
+
+    inFile >> newID;
     if(inFile.eof())
     {
       break;
@@ -565,48 +574,42 @@ void SchoolDatabase :: DeserializeStudents(string fileName)
     if(inFile.fail())
     {
       inFile.clear();
-      inFile.ignore(100000000, '\n');
-    }
-    cerr << dummyString  << endl;
+      //inFile.ignore(100000000, '\n');
+      cerr << "FAIL";
 
-    //first "* Student *" line
+      throw "Sorry, file not formatted correctly\n";
+    }
+    inFile.ignore(100000000, '\n');
+    cerr << "newID: " << newID << endl;
+
+    getline(inFile, newFirstName);
+    cerr << "newFirstName: " << newFirstName << endl;
+
+    getline(inFile, newLastName);
+    cerr << "newLastName: " << newLastName << endl;
+
+    getline(inFile, newStudentLevel);
+    cerr << "newStudentLevel: " << newStudentLevel << endl;
+
+    getline(inFile, newMajor);
+    cerr << "newMajor: " << newMajor << endl;
+
     //inFile.ignore(100000000, '\n');
-    getline(inFile, dummyString);
-    if(inFile.eof())
-    {
-      break;
-    }
-    if(inFile.fail())
-    {
-      inFile.clear();
-      inFile.ignore(100000000, '\n');
-    }
-    cerr << dummyString  << endl;
+    inFile >> newGPA;
 
-    for(int i = 0; i < 6; ++i)
-    {
-      inFile.get(dummyChar);
-    }
-    cin >> newIDint;
+    cerr << "newGPA: " << newGPA << endl;
 
-    cerr << newIDint << endl;
-    //Getting ID
+    inFile >> newAdvisorID;
 
-    //Getting name
-    //Getting studentLevel
-    //Getting major
-    //Getting GPA
-    //Getting advisorID
+    //clearing blank line between students
+    inFile.ignore(100000000, '\n');
+    cerr << "newAdvisorID: " << newAdvisorID << endl;
 
-*/
+    Student newStudent(newID, newFirstName, newLastName, newStudentLevel,
+      newMajor, newGPA, newAdvisorID);
 
+    studentTree.InsertNode(newStudent);
   }
-
-
-
-
-
-
 
   inFile.close();
 }

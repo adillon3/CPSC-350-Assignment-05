@@ -265,8 +265,6 @@ public:
     return temp -> key;
   }
 
-  void RecPrint(TreeNode<x> *node);
-  void PrintTree();
 
   void InOrder()
   {
