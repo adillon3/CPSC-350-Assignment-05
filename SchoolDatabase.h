@@ -28,8 +28,8 @@
    //Main methods for menu operations
    void PrintStudentDatabase();
    void PrintFacultyDatabase();
-   void PrintStudent(); //Prompt for Student ID and call helper method
-   void PrintFaculty(); //Prompt for Student ID and call helper method
+   void PrintStudentFromID(); //Prompt for Student ID and call helper method
+   void PrintFacultyFromID(); //Prompt for Student ID and call helper method
    void PrintStudentAdvisor(); //Promprt for ID, calls helper to search and print
    void PrintFacultyAdvisees(); //Promprt for ID, calls helper to search and print
    void AddStudent();

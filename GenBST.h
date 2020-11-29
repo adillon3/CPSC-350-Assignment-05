@@ -64,7 +64,47 @@ public:
       }
     }
   }
-  bool SearchNode(x value)
+  TreeNode<x>* ReturnPointerToNode(x value)
+  {
+    cerr << "ENtering ReturnPointerToNode\n\n";
+
+    if(IsEmpty())
+    {
+      cerr << "Is Empty\n\n";
+      return nullptr;
+    }
+
+    TreeNode<x> *current = root;
+    //tree is not empty, lets go looking for the node
+
+    while(current != nullptr)
+    {
+      if(current ->  key == value)
+      {
+        break;
+      }
+
+
+      cerr << "Entering while(current != nullptr || current -> key != value)\n\n";
+      if(value < current -> key)
+      {
+        cerr << "ENTERED if(value < current -> key)\n\n";
+        current = current -> left;
+        cerr << "current = current -> left;";
+      }
+      else
+      {
+        cerr << "Entered else \n\n";
+        current = current -> right;
+        cerr << "current = current -> right;";
+      }
+    }//END while(current != nullptr || current -> key != value)
+
+    cerr << "returning current\n\n";
+
+    return current;
+  }
+  bool IfSearchNode(x value)
   {
     if(IsEmpty())
     {

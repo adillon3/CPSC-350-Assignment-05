@@ -55,10 +55,10 @@ void SchoolDatabase :: RunDatabase()
         PrintFacultyDatabase();
         break;
       case 3:
-        //PrintStudent();
+        PrintStudentFromID();
         break;
       case 4:
-        //PrintFaculty(0)
+        //PrintFacultyFromID(0)
         break;
       case 5:
         //PrintStudentAdvisor();
@@ -153,11 +153,36 @@ void SchoolDatabase :: PrintFacultyDatabase()
     facultyTree.InOrder();
   }
 }
-void SchoolDatabase :: PrintStudent()
+void SchoolDatabase :: PrintStudentFromID()
 {
+  int studentID;
+  //promt user for student ID
 
+  cout << "Please enter the ID number of the student you'd like to find: ";
+  cin  >> studentID;
+  if(cin.fail())
+  {
+    cin.clear();
+    cin.ignore(100000000, '\n');
+    cout << "\nSorry, non numeric input was recieved.\nReturning to main menu...\n\n";
+
+    return;
+  }//END if(cin.fail())
+
+  Student searchStudent(studentID);
+
+  TreeNode<Student>* tempStudentNode = studentTree.ReturnPointerToNode(searchStudent);
+
+  if(tempStudentNode != nullptr)
+  {
+    cout << tempStudentNode  -> key;
+  }
+  else
+  {
+    cout << "Sorry, no student was found with the ID number: " << studentID << endl << endl;
+  }
 }
-void SchoolDatabase :: PrintFaculty()
+void SchoolDatabase :: PrintFacultyFromID()
 {
 
 }
@@ -471,7 +496,7 @@ int SchoolDatabase ::  GenerateStudentID()
     //Check if number is already in tree
     Student newStudent(randomValue);
 
-    if(studentTree.SearchNode(newStudent))
+    if(studentTree.IfSearchNode(newStudent))
     {
       valid = false;
     }
@@ -499,7 +524,7 @@ int SchoolDatabase ::  GenerateFacultyID()
     //Check if number is already in tree
     Faculty newFaculty(randomValue);
 
-    if(facultyTree.SearchNode(newFaculty))
+    if(facultyTree.IfSearchNode(newFaculty))
     {
       valid = false;
     }
@@ -605,7 +630,6 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
 
   while(true)
   {
-    cerr << "Entering while(true)" << endl;
     inFile >> newID;
     if(inFile.eof())
     {
@@ -629,7 +653,6 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
 
     do
     {
-      cerr << "Entering do...while(true)\n";
       getline(inFile, dummyString);
 
       if(dummyString.length() == 0 || inFile.eof())
