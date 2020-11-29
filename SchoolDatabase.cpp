@@ -10,12 +10,17 @@
 SchoolDatabase :: SchoolDatabase()
 {
   /*
-  if(CheckFileNameValid(studentFile) && CheckFileNameValid(FacultyFile))
+  if(CheckFileNameValid("studentFile") && CheckFileNameValid("studentFile"))
   {
-    DeserializeStudents();
-    DeserializeFaculty();
+  DeserializeStudents("studentFile");
+    DeserializeFaculty("studentFile");
   }
   */
+
+
+
+
+//  DeserializeStudents("studentFile");
 }
 SchoolDatabase :: ~SchoolDatabase()
 {
@@ -512,7 +517,7 @@ void SchoolDatabase :: SerializeStudents()
 
   oFile.open("studentTable");
 
-  studentTree.SerializeGenBST(oFile);
+  studentTree.SerializeStudentBST(oFile);
 
   oFile.close();
 }
@@ -527,11 +532,85 @@ void SchoolDatabase :: SerializeFaculty()
   oFile.close();
 }
 
-void SchoolDatabase :: DeserializeStudents()
+void SchoolDatabase :: DeserializeStudents(string fileName)
 {
+  string dummyString;
+  char   dummyChar;
+  string newIDstring;
+  int    newIDint;
+  string newFirstName;
+  string newLastName;
+  string newStudentLevel;
+  string newMajor;
+  string newGPAstring;
+  float  newGPAfloat;
+  string newAdvisorString;
+  int    newAdvisorInt;
 
+
+  ifstream inFile;
+
+  inFile.open("studentTable");
+
+
+  while(true)
+  {
+      /*
+    //first "*********..." line
+    getline(inFile, dummyString);
+    if(inFile.eof())
+    {
+      break;
+    }
+    if(inFile.fail())
+    {
+      inFile.clear();
+      inFile.ignore(100000000, '\n');
+    }
+    cerr << dummyString  << endl;
+
+    //first "* Student *" line
+    //inFile.ignore(100000000, '\n');
+    getline(inFile, dummyString);
+    if(inFile.eof())
+    {
+      break;
+    }
+    if(inFile.fail())
+    {
+      inFile.clear();
+      inFile.ignore(100000000, '\n');
+    }
+    cerr << dummyString  << endl;
+
+    for(int i = 0; i < 6; ++i)
+    {
+      inFile.get(dummyChar);
+    }
+    cin >> newIDint;
+
+    cerr << newIDint << endl;
+    //Getting ID
+
+    //Getting name
+    //Getting studentLevel
+    //Getting major
+    //Getting GPA
+    //Getting advisorID
+
+*/
+
+  }
+
+
+
+
+
+
+
+  inFile.close();
 }
-void SchoolDatabase :: DeserializeFaculty()
+void SchoolDatabase :: DeserializeFaculty(string fileName)
 {
 
 }

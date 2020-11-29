@@ -85,6 +85,19 @@ Student :: ~Student()
    oFile << "Advisor: " << advisorID << endl;
    oFile << "------------------------------------\n\n";
  }
+
+void Student :: SerializeStudent(ostream& oFile)
+{
+  oFile << id << endl;
+  oFile << firstName << endl;
+  oFile << lastName << endl;
+  oFile << studentLevel << endl;
+  oFile << major << endl;
+  oFile << gpa << endl;
+  oFile << advisorID << endl;
+  oFile << endl; // extra space to have seperation between students
+}
+
  /*
  ostream& operator<<(ostream& oFile, const & object persons)
  {

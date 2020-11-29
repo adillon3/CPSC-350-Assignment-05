@@ -11,6 +11,7 @@
  #include "Student.h"
  #include "Faculty.h"
  #include "GenBST.h"
+ #include "StudentBST.h"
  #include "GenStack.h"
  #include "Transaction.h"
 
@@ -52,11 +53,11 @@
    void SerializeStudents();
    void SerializeFaculty();
 
-   void DeserializeStudents();
-   void DeserializeFaculty();
+   void DeserializeStudents(string fileName);
+   void DeserializeFaculty(string fileName);
 
    //Data fields
-   GenBST<Student> studentTree;
+   StudentBST studentTree;
    GenBST<Faculty> facultyTree;
 
    GenStack<Transaction> transactionStack;

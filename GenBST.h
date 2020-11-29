@@ -298,7 +298,7 @@ public:
     SerializeGenBSTHelper(oFile, parentNode -> right);
   }
 
-private:
+protected:
   //traversals
     void InOrderHelper(TreeNode<x>* n)
     {
