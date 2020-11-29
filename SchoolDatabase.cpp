@@ -9,18 +9,23 @@
 
 SchoolDatabase :: SchoolDatabase()
 {
-  /*
-  if(CheckFileNameValid("studentFile") && CheckFileNameValid("studentFile"))
+  string studentFile = "studentTable";
+  string facultyFile = "facultyTable";
+
+
+  if(CheckFileNameValid(studentFile) && CheckFileNameValid(facultyFile))
   {
-  DeserializeStudents("studentFile");
-    DeserializeFaculty("studentFile");
+    try
+    {
+      DeserializeStudents(studentFile);
+      DeserializeFaculty(facultyFile);
+    }
+    catch(const char)
+    {
+      cout << "Sorry, there was an error reading the file.\n\n";
+    }
+
   }
-  */
-
-
-
-
-  DeserializeStudents("studentFile");
 }
 SchoolDatabase :: ~SchoolDatabase()
 {
@@ -392,7 +397,7 @@ void SchoolDatabase ::  Rollback()
 }
 
 
-bool CheckFileNameValid(string& fileName)
+bool SchoolDatabase :: CheckFileNameValid(string fileName)
 {
   ifstream inFile;
   bool valid = false;
@@ -534,9 +539,6 @@ void SchoolDatabase :: SerializeFaculty()
 
 void SchoolDatabase :: DeserializeStudents(string fileName)
 {
-  cerr << "**************Entering DeserializeStudents\n\n";
-
-
   int    newID;
   string newFirstName;
   string newLastName;
@@ -544,28 +546,13 @@ void SchoolDatabase :: DeserializeStudents(string fileName)
   string newMajor;
   float  newGPA;
   int    newAdvisorID;
-  string dummyString;
 
   ifstream inFile;
 
-  inFile.open("studentTable");
-
-  if(inFile.is_open())
-  {
-    cerr << "OPEN";
-  }
-  else
-  {
-    cerr << "CLOSED";
-  }
-  cerr << endl << endl;
-
+  inFile.open(fileName);
 
   while(true)
   {
-    cerr << "ENTERING WHILE\n\n";
-
-
     inFile >> newID;
     if(inFile.eof())
     {
@@ -574,36 +561,24 @@ void SchoolDatabase :: DeserializeStudents(string fileName)
     if(inFile.fail())
     {
       inFile.clear();
-      //inFile.ignore(100000000, '\n');
-      cerr << "FAIL";
-
       throw "Sorry, file not formatted correctly\n";
     }
     inFile.ignore(100000000, '\n');
-    cerr << "newID: " << newID << endl;
 
     getline(inFile, newFirstName);
-    cerr << "newFirstName: " << newFirstName << endl;
 
     getline(inFile, newLastName);
-    cerr << "newLastName: " << newLastName << endl;
 
     getline(inFile, newStudentLevel);
-    cerr << "newStudentLevel: " << newStudentLevel << endl;
 
     getline(inFile, newMajor);
-    cerr << "newMajor: " << newMajor << endl;
 
-    //inFile.ignore(100000000, '\n');
     inFile >> newGPA;
-
-    cerr << "newGPA: " << newGPA << endl;
 
     inFile >> newAdvisorID;
 
     //clearing blank line between students
     inFile.ignore(100000000, '\n');
-    cerr << "newAdvisorID: " << newAdvisorID << endl;
 
     Student newStudent(newID, newFirstName, newLastName, newStudentLevel,
       newMajor, newGPA, newAdvisorID);
@@ -615,5 +590,67 @@ void SchoolDatabase :: DeserializeStudents(string fileName)
 }
 void SchoolDatabase :: DeserializeFaculty(string fileName)
 {
+  int    newID;
+  string newFirstName;
+  string newLastName;
+  string newFacultyLevel;
+  string newDepartment;
+  string dummyString;
+  int    newAdviseeID;
+  DoublyLinkedList<int> newAdviseesIDsList;
 
+  ifstream inFile;
+
+  inFile.open(fileName);
+
+  while(true)
+  {
+    cerr << "Entering while(true)" << endl;
+    inFile >> newID;
+    if(inFile.eof())
+    {
+      break;
+    }
+    if(inFile.fail())
+    {
+      inFile.clear();
+      throw "Sorry, file not formatted correctly\n";
+    }
+    inFile.ignore(100000000, '\n');
+
+    getline(inFile, newFirstName);
+
+    getline(inFile, newLastName);
+
+    getline(inFile, newFacultyLevel);
+
+    getline(inFile, newDepartment);
+
+
+    do
+    {
+      cerr << "Entering do...while(true)\n";
+      getline(inFile, dummyString);
+
+      if(dummyString.length() == 0 || inFile.eof())
+      {
+        break;
+      }
+
+      istringstream(dummyString) >> newAdviseeID;
+
+      newAdviseesIDsList.InsertBack(newAdviseeID);
+
+    } while(true);
+
+    //clearing blank line between students
+    //inFile.ignore(100000000, '\n');
+
+    Faculty newFaculty(newID, newFirstName, newLastName, newFacultyLevel,
+      newDepartment, newAdviseesIDsList);
+
+    facultyTree.InsertNode(newFaculty);
+  }
+
+  inFile.close();
 }

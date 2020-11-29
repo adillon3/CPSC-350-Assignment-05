@@ -8,6 +8,8 @@
  #ifndef SCHOOLDATABASE_H_
  #define SCHOOLDATABASE_H_
 
+ #include <sstream>
+
  #include "Student.h"
  #include "Faculty.h"
  #include "StudentBST.h"
@@ -41,7 +43,7 @@
  private:
    //Private Methods
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
-   bool CheckFileNameValid(string& fileName);
+   bool CheckFileNameValid(string fileName);
    bool GetYesOrNoInput(const string initialMessage);
 
    int GenerateStudentID();

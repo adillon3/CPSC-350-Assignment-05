@@ -91,7 +91,7 @@ void Faculty :: SerializeFaculty(ostream& oFile)
   oFile << facultyLevel << endl;
   oFile << department << endl;
 
-  for(int i = 0; adviseesIDsList.GetSize(); ++i)
+  for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
   {
     oFile << adviseesIDsList.GetValueAtIndex(i) << endl;
   }
