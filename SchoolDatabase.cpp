@@ -372,7 +372,6 @@ void SchoolDatabase :: DeleteStudent()
   bool valid = false;
   int studentIDToDelete;
 
-
   do
   {
     cout << "Enter the ID of the Student to remove: ";
@@ -398,16 +397,30 @@ void SchoolDatabase :: DeleteStudent()
   } while(!valid);
 
 
-  Student studentToDelete(studentIDToDelete);
+  Student tempStudentNode(studentIDToDelete);
+  cerr << "tempStudentNode:\n";
+  cerr << tempStudentNode;
 
-  if(studentTree.DeleteNode(studentToDelete))
+
+  TreeNode<Student>* studentToDelete = studentTree.ReturnPointerToNode(tempStudentNode);
+  cerr << "studentToDelete:\n";
+  cerr << studentToDelete -> key;
+
+  int studentToDeletesAdvisor = studentToDelete -> key.GetAdvisorID();
+  cerr << "\nstudentToDeletesAdvisor: " << studentToDeletesAdvisor << endl;
+
+  if(studentTree.DeleteNode(studentToDelete -> key))
   {
     cout << studentIDToDelete << " was removed from the system\n";
+    //Removing student from advisor's advisee list
+    RemoveStudentIDFromFacultyTree(studentToDeletesAdvisor, studentIDToDelete);
   }
   else
   {
     cout << studentIDToDelete << " could not be found in the system.\n";
   }
+
+  cerr << "End of DeleteStudent()\n\n";
 }
 void SchoolDatabase :: AddFaculty()
 {
@@ -486,7 +499,11 @@ void SchoolDatabase :: DeleteFaculty()
 }
 void SchoolDatabase :: ChangeStudentAdvisor()
 {
-
+  //get student
+    //Check that its in tree
+  //Get new advisor ID
+    //Check that new advisor is in faculty tree
+  //Make the change
 }
 void SchoolDatabase :: RemoveAdvisee()
 {
@@ -494,7 +511,7 @@ void SchoolDatabase :: RemoveAdvisee()
 }
 void SchoolDatabase ::  Rollback()
 {
-
+  //POP top off stack
 }
 
 
@@ -756,9 +773,56 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
 
 void SchoolDatabase :: AddStudentIDToFacultyTree(int facultyID, int newStudentID)
 {
+
+  cerr << "Entering RemoveStudentIDFromFacultyTree()";
   Faculty tempFaculty(facultyID);
+  cerr << "tempFaculty\n";
+  cerr << tempFaculty;
+
+  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
+  cerr << "designatedFaculty\n";
+  cerr << designatedFaculty;
+
+  designatedFaculty -> key.AddAdvisee(newStudentID);
+
+  cerr << "designatedFaculty" << designatedFaculty -> key;
+  /*Faculty tempFaculty(facultyID);
 
   TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
 
   designatedFaculty -> key.AddAdvisee(newStudentID);
+
+  cerr << "designatedFaculty" << designatedFaculty -> key;*/
+}
+void SchoolDatabase :: RemoveStudentIDFromFacultyTree(int facultyID, int newStudentID)
+{
+  cerr << "Entering RemoveStudentIDFromFacultyTree()";
+  Faculty tempFaculty(facultyID);
+  cerr << "tempFaculty\n";
+  cerr << tempFaculty;
+
+  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
+  cerr << "designatedFaculty\n";
+  cerr << designatedFaculty;
+
+  designatedFaculty -> key.RemoveAdvisee(newStudentID);
+
+  cerr << "designatedFaculty" << designatedFaculty -> key;
+
+
+
+  /*cerr << "Entering RemoveStudentIDFromFacultyTree()";
+
+  Faculty tempFaculty(facultyID);
+
+  cerr << "Created tempFaculty: \n" << tempFaculty;
+
+
+  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
+  cerr << "Created designatedFaculty: \n" << designatedFaculty -> key;
+
+
+  designatedFaculty -> key.RemoveAdvisee(newStudentID);
+
+  cerr << "Advisee Removed";*/
 }

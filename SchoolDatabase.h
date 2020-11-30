@@ -52,13 +52,14 @@
    Student* SearchTreeForStudentID(int searchID);
    Faculty* SearchTreeForFacultyID(int searchID);
 
+   //Sereialization
    void SerializeStudents();
    void SerializeFaculty();
-
    void DeserializeStudents(string fileName);
    void DeserializeFaculty(string fileName);
 
    void AddStudentIDToFacultyTree(int newAdvisorID, int newID);
+   void RemoveStudentIDFromFacultyTree(int newAdvisorID, int newID);
 
    //Data fields
    StudentBST studentTree;

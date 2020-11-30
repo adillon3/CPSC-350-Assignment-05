@@ -129,6 +129,7 @@ public:
   }
   x Delete(x key)
   {
+    cerr << "Entering Delete()\n";
     DoublyLinkedListNode<x>* temp = Search(key);
 
     if(temp == head)
