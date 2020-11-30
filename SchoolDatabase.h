@@ -49,10 +49,6 @@
    int GenerateStudentID();
    int GenerateFacultyID();
 
-   //REMOVE THESE???
-   Student* SearchTreeForStudentID(int searchID);
-   Faculty* SearchTreeForFacultyID(int searchID);
-
    //Sereialization
    void SerializeStudents();
    void SerializeFaculty();

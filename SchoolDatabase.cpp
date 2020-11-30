@@ -238,8 +238,6 @@ void SchoolDatabase :: PrintStudentAdvisor()
          << tempStudentNode  -> key.GetLastName() << " is " */
 
     //cout << tempStudentNode  -> key;
-
-    cerr << "GET FACULTY DATA from FAULTYTREE\n\n";
   }
   else
   {
@@ -448,7 +446,6 @@ void SchoolDatabase :: DeleteStudent()
   TreeNode<Student>* studentToDelete = studentTree.ReturnPointerToNode(tempStudentNode);
 
   int studentToDeletesAdvisor = studentToDelete -> key.GetAdvisorID();
-  cerr << "\nstudentToDeletesAdvisor: " << studentToDeletesAdvisor << endl;
 
   if(studentTree.DeleteNode(studentToDelete -> key))
   {
@@ -460,8 +457,6 @@ void SchoolDatabase :: DeleteStudent()
   {
     cout << studentIDToDelete << " could not be found in the system.\n";
   }
-
-  cerr << "End of DeleteStudent()\n\n";
 }
 void SchoolDatabase :: AddFaculty()
 {

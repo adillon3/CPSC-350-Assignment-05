@@ -51,7 +51,6 @@ void Faculty :: AddAdvisee(int newAdvisee)
 }
 void Faculty :: RemoveAdvisee(int oldAdvisee)
 {
-  cerr << "Entering RemoveAdvisee()\n";
   adviseesIDsList.Delete(oldAdvisee);
 }
 
