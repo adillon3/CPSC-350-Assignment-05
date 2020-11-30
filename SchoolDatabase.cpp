@@ -248,7 +248,7 @@ void SchoolDatabase :: PrintStudentAdvisor()
 }
 void SchoolDatabase :: PrintFacultyAdvisees()
 {
-
+  
 }
 void SchoolDatabase :: AddStudent()
 {
@@ -507,7 +507,10 @@ void SchoolDatabase :: ChangeStudentAdvisor()
 }
 void SchoolDatabase :: RemoveAdvisee()
 {
-
+  //Get faculty ID
+  //Get student ID
+  //Set student Advisor to 0 (user change student advisor helper?)
+  //remove student ID from faculty with RemoveStudentIDFromFacultyTree(facultyID, newStudentID)
 }
 void SchoolDatabase ::  Rollback()
 {
@@ -773,56 +776,17 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
 
 void SchoolDatabase :: AddStudentIDToFacultyTree(int facultyID, int newStudentID)
 {
-
-  cerr << "Entering RemoveStudentIDFromFacultyTree()";
   Faculty tempFaculty(facultyID);
-  cerr << "tempFaculty\n";
-  cerr << tempFaculty;
-
-  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
-  cerr << "designatedFaculty\n";
-  cerr << designatedFaculty;
-
-  designatedFaculty -> key.AddAdvisee(newStudentID);
-
-  cerr << "designatedFaculty" << designatedFaculty -> key;
-  /*Faculty tempFaculty(facultyID);
 
   TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
 
   designatedFaculty -> key.AddAdvisee(newStudentID);
-
-  cerr << "designatedFaculty" << designatedFaculty -> key;*/
 }
 void SchoolDatabase :: RemoveStudentIDFromFacultyTree(int facultyID, int newStudentID)
 {
-  cerr << "Entering RemoveStudentIDFromFacultyTree()";
-  Faculty tempFaculty(facultyID);
-  cerr << "tempFaculty\n";
-  cerr << tempFaculty;
-
-  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
-  cerr << "designatedFaculty\n";
-  cerr << designatedFaculty;
-
-  designatedFaculty -> key.RemoveAdvisee(newStudentID);
-
-  cerr << "designatedFaculty" << designatedFaculty -> key;
-
-
-
-  /*cerr << "Entering RemoveStudentIDFromFacultyTree()";
-
   Faculty tempFaculty(facultyID);
 
-  cerr << "Created tempFaculty: \n" << tempFaculty;
-
-
   TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
-  cerr << "Created designatedFaculty: \n" << designatedFaculty -> key;
-
 
   designatedFaculty -> key.RemoveAdvisee(newStudentID);
-
-  cerr << "Advisee Removed";*/
 }
