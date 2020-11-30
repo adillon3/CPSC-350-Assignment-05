@@ -64,7 +64,7 @@ void SchoolDatabase :: RunDatabase()
         //PrintStudentAdvisor();
         break;
       case 6:
-        //PrintFacultyAdvisees();
+        PrintFacultyAdvisees();
         break;
       case 7:
         AddStudent();
@@ -248,7 +248,52 @@ void SchoolDatabase :: PrintStudentAdvisor()
 }
 void SchoolDatabase :: PrintFacultyAdvisees()
 {
-  
+  int facultyToPrintAdviseesOf;
+  bool valid = false;
+
+  do
+  {
+    cout << "Enter the ID of the Faculty Member you'd like to see the advisees of: ";
+    cin >> facultyToPrintAdviseesOf;
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100000000, '\n');
+      cout << "\nSorry, please enter a valid numeric Student ID.\n\n";
+
+      valid = false;
+    }
+    else if(facultyToPrintAdviseesOf > 0)
+    {
+      valid = true;
+    }
+    else
+    {
+      cout << "\nSorry, please enter a positive value.\n\n";
+      valid = false;
+    }
+  } while(!valid);
+
+/*
+  PRINT ALL DATA ON THE STUDENTS NOT JUST THE ID
+*/
+
+
+  Faculty tempFaculty(facultyToPrintAdviseesOf);
+
+  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
+  DoublyLinkedList<int> studentList = designatedFaculty -> key.GetAdviseesIDs();
+
+  for(int i = 0; i < studentList.GetSize(); ++i)
+  {
+    Student tempStudent(studentList.GetValueAtIndex(i));
+    cout << studentTree.ReturnPointerToNode(tempStudent) -> key;
+  }
+
+
+
+
+
 }
 void SchoolDatabase :: AddStudent()
 {
@@ -398,13 +443,9 @@ void SchoolDatabase :: DeleteStudent()
 
 
   Student tempStudentNode(studentIDToDelete);
-  cerr << "tempStudentNode:\n";
-  cerr << tempStudentNode;
 
 
   TreeNode<Student>* studentToDelete = studentTree.ReturnPointerToNode(tempStudentNode);
-  cerr << "studentToDelete:\n";
-  cerr << studentToDelete -> key;
 
   int studentToDeletesAdvisor = studentToDelete -> key.GetAdvisorID();
   cerr << "\nstudentToDeletesAdvisor: " << studentToDeletesAdvisor << endl;

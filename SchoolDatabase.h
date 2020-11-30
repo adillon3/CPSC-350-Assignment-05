@@ -49,6 +49,7 @@
    int GenerateStudentID();
    int GenerateFacultyID();
 
+   //REMOVE THESE???
    Student* SearchTreeForStudentID(int searchID);
    Faculty* SearchTreeForFacultyID(int searchID);
 
@@ -67,12 +68,13 @@
 
    GenStack<Transaction> transactionStack;
 
-   const string MAIN_MENU = "1.  Print all students and their information\n"
+   const string MAIN_MENU = "* MAIN MENU *\n"
+                            "1.  Print all students and their information\n"
                             "2.  Print all faculty and their information\n"
                             "3.  Find student from ID\n"
                             "4.  Find faculty from ID\n"
                             "5.  Find student from ID and their advisor\n"
-                            "6.  Find faculty from ID and their advisees\n"
+                            "6.  Find faculty advisees from faculty ID\n"
                             "7.  Add a new student\n"
                             "8.  Delete a student from their ID\n"
                             "9.  Add a new faculty member\n"

@@ -43,10 +43,11 @@
   void SetLastName(string newLastName);*/
 
   void SerializeFaculty(ostream& oFile);
+  void PrintAdvisees(ostream& oFile) const;
 
  private:
   static int makeFacultyID();
-  void PrintAdvisees(ostream& oFile);
+
 
   string facultyLevel;
   string department;

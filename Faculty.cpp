@@ -66,19 +66,7 @@ void Faculty :: PrintPerson(ostream& oFile) const
   oFile << "Level:   " << facultyLevel << endl;
   oFile << "Dept:    " << department << endl;
 
-  oFile << "Advisees' IDs:\n";
-
-  if(adviseesIDsList.IsEmpty())
-  {
-    oFile << " - No Advisees Found\n";
-  }
-  else
-  {
-    for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
-    {
-      oFile << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
-    }
-  }
+  PrintAdvisees(oFile);
 
   oFile << "------------------------------------\n\n";
 }
@@ -99,4 +87,21 @@ void Faculty :: SerializeFaculty(ostream& oFile)
 
 
   oFile << endl; // extra space to have seperation between students
+}
+
+void Faculty :: PrintAdvisees(ostream& oFile) const
+{
+  oFile << "Advisees' IDs:\n";
+
+  if(adviseesIDsList.IsEmpty())
+  {
+    oFile << " - No Advisees Found\n";
+  }
+  else
+  {
+    for(int i = 0; i < adviseesIDsList.GetSize(); ++i)
+    {
+      oFile << " - " << adviseesIDsList.GetValueAtIndex(i) << endl;
+    }
+  }
 }
