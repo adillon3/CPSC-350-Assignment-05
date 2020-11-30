@@ -82,7 +82,19 @@ Student :: ~Student()
    oFile << showpoint << "GPA:     " << gpa << endl;
    oFile << noshowpoint << setprecision(6);//resetting formating
 
-   oFile << "Advisor: " << advisorID << endl;
+
+   oFile << "Advisor: ";
+   //if no advisor
+   if(advisorID == 0)
+   {
+     oFile << "No Advisor Found\n";
+   }
+   //if Advisor does exist
+   else
+   {
+     oFile << advisorID << endl;
+   }
+
    oFile << "------------------------------------\n\n";
  }
 

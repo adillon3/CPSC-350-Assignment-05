@@ -527,6 +527,12 @@ void SchoolDatabase :: DeleteFaculty()
   if(facultyTree.DeleteNode(facultyToDelete))
   {
     cout << facultyToDelete << " was removed from the system\n";
+
+    /*
+    REASSIGN ADVSEES
+    IF LAST FACUTLTY MEMBER ASK IF THEY ARE SURE THAT THEY WANT TO DELETE THEM
+    IS LAST FACULTY, SET ALL STUDENT ADVISORS TO 0
+    */
   }
   else
   {
