@@ -363,6 +363,7 @@ void SchoolDatabase :: AddStudent()
 
 
   studentTree.InsertNode(newStudent);
+  AddStudentIDToFacultyTree(newAdvisorID, newID);
 
   cout << endl << newFirstName << " " << newLastName << " has been entered into the system and given the ID Number: " << newID << endl << endl;
 }
@@ -616,6 +617,7 @@ int SchoolDatabase ::  GenerateFacultyID()
   return randomValue;
 }
 
+//Serialiization
 void SchoolDatabase :: SerializeStudents()
 {
   ofstream oFile;
@@ -636,7 +638,6 @@ void SchoolDatabase :: SerializeFaculty()
 
   oFile.close();
 }
-
 void SchoolDatabase :: DeserializeStudents(string fileName)
 {
   int    newID;
@@ -751,4 +752,13 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
   }
 
   inFile.close();
+}
+
+void SchoolDatabase :: AddStudentIDToFacultyTree(int facultyID, int newStudentID)
+{
+  Faculty tempFaculty(facultyID);
+
+  TreeNode<Faculty>* designatedFaculty = facultyTree.ReturnPointerToNode(tempFaculty);
+
+  designatedFaculty -> key.AddAdvisee(newStudentID);
 }

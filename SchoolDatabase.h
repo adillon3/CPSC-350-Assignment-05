@@ -58,6 +58,8 @@
    void DeserializeStudents(string fileName);
    void DeserializeFaculty(string fileName);
 
+   void AddStudentIDToFacultyTree(int newAdvisorID, int newID);
+
    //Data fields
    StudentBST studentTree;
    FacultyBST facultyTree;
