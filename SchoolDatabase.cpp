@@ -61,7 +61,7 @@ void SchoolDatabase :: RunDatabase()
         PrintFacultyFromID();
         break;
       case 5:
-        PrintStudentAdvisor();
+        //PrintStudentAdvisor();
         break;
       case 6:
         //PrintFacultyAdvisees();
@@ -323,19 +323,38 @@ void SchoolDatabase :: AddStudent()
     }
     else
     {
-      /*
-      if(SearchTreeForFacultyID(newAdvisorID))
+      Faculty tempFaculty(newAdvisorID);
+
+      cin.ignore(100000000, '\n');
+      if(!facultyTree.IfSearchNode(tempFaculty))
       {
-        cout << "Sorry, that faculty ID, does not correspond with any current members of our team.\n";
-        cout << "Enter \"L\" if you would like to see a list of all faculty members.  Enter \"\" if you would like to enter a new Advisor ID"
+        cout << "Sorry, that faculty ID, does not correspond with any current members of our team.\n\n";
+        cout << "Enter \"L\" if you would like to see a list of all faculty members.\n"
+             << "Enter \"N\" if you would like to enter a new Advisor ID.\n"
+             << "Enter \"R\" if you would like to return to the main menu.\n"
+             << "Choice: ";
+        char choiceChar;
+        cin.get(choiceChar);
+
+        cin.ignore(100000000, '\n');
+
+        if(toupper(choiceChar) == 'L')
+        {
+          PrintFacultyDatabase();
+        }
+        else if(toupper(choiceChar) != 'N')
+        {
+          return;
+        }
+
         valid = false;
       }
       else
-      {*/
+      {
         valid = true;
-      //}
+      }
 
-    }
+    }//END ELSE of if(cin.fail())
 
   } while(!valid);
 
