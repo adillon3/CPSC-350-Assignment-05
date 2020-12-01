@@ -17,8 +17,8 @@ SchoolDatabase :: SchoolDatabase()
   {
     try
     {
-      DeserializeStudents(studentFile);
       DeserializeFaculty(facultyFile);
+      DeserializeStudents(studentFile);
     }
     catch(const char)
     {
@@ -31,7 +31,6 @@ SchoolDatabase :: ~SchoolDatabase()
 {
 
 }
-
 void SchoolDatabase :: RunDatabase()
 {
   //VARIABLES
@@ -61,7 +60,7 @@ void SchoolDatabase :: RunDatabase()
         PrintFacultyFromID();
         break;
       case 5:
-        //PrintStudentAdvisor();
+        PrintStudentAdvisor();
         break;
       case 6:
         PrintFacultyAdvisees();
@@ -97,7 +96,6 @@ void SchoolDatabase :: RunDatabase()
 
   cout << "END\n\n";
 }
-
 int SchoolDatabase :: GetMenuInput(const string initialMessage, const int numMenuOptions)
 {
   bool valid = false;
@@ -127,7 +125,6 @@ int SchoolDatabase :: GetMenuInput(const string initialMessage, const int numMen
 
   } while(!valid);
 }
-
 void SchoolDatabase :: PrintStudentDatabase()
 {
   cout << "Current Students\n";
@@ -233,16 +230,44 @@ void SchoolDatabase :: PrintStudentAdvisor()
 
   if(tempStudentNode != nullptr)
   {
-    /*cout << "The adviosr for " << studentID
-         << "[" << tempStudentNode  -> key.GetFirstName() << " "
-         << tempStudentNode  -> key.GetLastName() << " is " */
+    cout << "The adviosr for " << studentID
+         << " [" << tempStudentNode  -> key.GetFirstName() << " "
+         << tempStudentNode  -> key.GetLastName() << "] is ";
 
-    //cout << tempStudentNode  -> key;
-  }
+    int advisorID = tempStudentNode  -> key.GetAdvisorID();
+
+    //No advisor
+    if(advisorID == 0)
+    {
+      cout << "unasigned at this time.\n";
+      cout << "This can be changed in the main menu\n\n";
+
+    }
+    //Advisor is set
+    else
+    {
+      Faculty tempAdvisor(advisorID);
+
+      TreeNode<Faculty>* advisorNode = facultyTree.ReturnPointerToNode(tempAdvisor);
+
+      //Advisor found in database
+      if(advisorNode != nullptr)
+      {
+        cout << ":\n";
+        cout << advisorNode -> key;
+      }
+      //Advisor is NOT found
+      else
+      {
+        cout << "not currently in the database.\n\n";
+      }
+    }//END else for if(advisorID == 0)
+  }//END if(tempStudentNode != nullptr)
   else
   {
-    cout << "Sorry, no student was found with the ID number: " << studentID << endl << endl;
-  }
+    cout << "Sorry, no student was found with the ID number: " << studentID << endl;
+    cout << "Returning to the main menu\n\n";
+  }//END else for if(tempStudentNode != nullptr)
 }
 void SchoolDatabase :: PrintFacultyAdvisees()
 {
