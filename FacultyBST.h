@@ -17,6 +17,11 @@ class FacultyBST : public GenBST<Faculty>
 public:
   void SerializeFacultyBST(ostream& oFile);
   void SerializeFacultyBSTHelper(ostream& oFile, TreeNode<Faculty>* parentNode);
+
+  //functions for getting ID of a different faculty member
+  int GetANewIDFacultyMemberID(int oldFacultyID);
+private:
+  void GetANewIDFacultyMemberIDHelper(TreeNode<Faculty>* current, int oldFacultyID, int &newFacultyID);
 };
 
  #endif // FACULTYBST_H_

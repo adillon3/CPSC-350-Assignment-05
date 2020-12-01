@@ -81,7 +81,7 @@ void SchoolDatabase :: RunDatabase()
         ChangeStudentAdvisor();
         break;
       case 12:
-        //RemoveAdvisee()
+        RemoveAdviseeFromID();
         break;
       case 13:
         //Rollback();
@@ -582,7 +582,6 @@ void SchoolDatabase :: ChangeStudentAdvisor()
   }//END if(cin.fail())
 
   Student searchStudent(studentID);
-
   TreeNode<Student>* tempStudentNode = studentTree.ReturnPointerToNode(searchStudent);
 
   if(tempStudentNode != nullptr)
@@ -608,13 +607,11 @@ void SchoolDatabase :: ChangeStudentAdvisor()
       else
       {
         Faculty tempFaculty(newAdvisorID);
-
-        cin.ignore(100000000, '\n');
-
         TreeNode<Faculty>* newAdvisorNode = facultyTree.ReturnPointerToNode(tempFaculty);
 
         if(newAdvisorNode == nullptr)
         {
+          cin.ignore(100000000, '\n');
           cout << "Sorry, that faculty ID, does not correspond with any current members of our team.\n\n";
           cout << "Enter \"L\" if you would like to see a list of all faculty members.\n"
                << "Enter \"N\" if you would like to enter a new Advisor ID.\n"
@@ -640,9 +637,18 @@ void SchoolDatabase :: ChangeStudentAdvisor()
         {
           valid = true;
 
-          tempStudentNode -> key.SetAdvisorID(newAdvisorID);
+          //Creating temp node for old advisor
+          Faculty tempFaculty2(tempStudentNode -> key.GetAdvisorID());
+          TreeNode<Faculty>* oldAdvisorNode = facultyTree.ReturnPointerToNode(tempFaculty2);
 
+
+          tempStudentNode -> key.SetAdvisorID(newAdvisorID);
           newAdvisorNode -> key.AddAdvisee(studentID);
+          oldAdvisorNode -> key.RemoveAdvisee(studentID);
+
+          cout << "Removing " << studentID << " from faculty member " << tempStudentNode -> key.GetAdvisorID() << "\'s list of advisees";
+          cout << " and adding them to " << newAdvisorID << "\'s list of advisees\n\n";
+
         }
       }//END ELSE of if(cin.fail())
     } while(!valid);
@@ -653,12 +659,107 @@ void SchoolDatabase :: ChangeStudentAdvisor()
     cout << "Returning to the main menu\n\n";
   }//END else for if(tempStudentNode != nullptr)
 }
-void SchoolDatabase :: RemoveAdvisee()
+void SchoolDatabase :: RemoveAdviseeFromID()
 {
-  //Get faculty ID
-  //Get student ID
-  //Set student Advisor to 0 (user change student advisor helper?)
-  //remove student ID from faculty with RemoveStudentIDFromFacultyTree(facultyID, newStudentID)
+
+  int  facultyToDeleteFrom;
+  bool valid = false;
+  int  studentToDelete;
+  int  newAdvisorID;
+
+  //GETIING FACULTY
+  cout << "Please enter the ID number of the faculty memeber who you would like to remove an advisee from: ";
+  cin  >> facultyToDeleteFrom;
+  if(cin.fail())
+  {
+    cin.clear();
+    cin.ignore(100000000, '\n');
+    cout << "\nSorry, non numeric input was recieved.\nReturning to main menu...\n\n";
+
+    return;
+  }//END if(cin.fail())
+
+  //CREATING FACULTY NODE
+  Faculty tempFaculty(facultyToDeleteFrom);
+  TreeNode<Faculty>* tempFacultyNode = facultyTree.ReturnPointerToNode(tempFaculty);
+
+  //FINDING STUDENT TO REMOVE
+  do
+  {
+    cout << tempFacultyNode -> key;
+    cout << "Please enter the ID number of the student's you'd like to remove: ";
+    cin >> studentToDelete;
+    if(cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100000000, '\n');
+      cout << "\nSorry, please enter a numeric student ID.\n\n";
+
+      valid = false;
+    }
+
+    DoublyLinkedList<int> adviseesList = tempFacultyNode -> key.GetAdviseesIDs();
+
+    if(!adviseesList.Search(studentToDelete))
+    {
+      cin.ignore(100000000, '\n');
+      cout << "Sorry, that faculty ID, does not correspond with any of " << facultyToDeleteFrom << "\'s advisees.\n\n";
+      cout << "Enter \"N\" if you would like to enter a new Advisor ID.\n"
+           << "Enter \"R\" if you would like to return to the main menu.\n"
+           << "Choice: ";
+      char choiceChar;
+      cin.get(choiceChar);
+
+      if(toupper(choiceChar) != 'N')
+      {
+        return;
+      }
+      valid = false;
+    }
+    else
+    {
+      valid = true;
+    }
+  } while(!valid);
+
+  Student tempStudent(studentToDelete);
+  TreeNode<Student>* studentNode = studentTree.ReturnPointerToNode(tempStudent);
+
+
+  newAdvisorID = facultyTree.GetANewIDFacultyMemberID(facultyToDeleteFrom);
+
+  if(newAdvisorID == 0)
+  {
+    cin.ignore(100000000, '\n');
+    string prompt = "Making this change will cause this student to have no advisor, are you sure you'd like to proceed?";
+    bool proceed = GetYesOrNoInput(prompt);
+
+    if(!proceed)
+    {
+      cout << "Returning to main menu\n\n";
+      return;
+    }
+  }
+
+
+  studentNode -> key.SetAdvisorID(newAdvisorID);
+  tempFacultyNode -> key.RemoveAdvisee(studentToDelete);
+
+  cout << "Removing " << studentToDelete << " from faculty member " <<facultyToDeleteFrom << "\'s list of advisees";
+
+  //Setiing new advisor list to include this student
+  if(newAdvisorID != 0)
+  {
+    Faculty tempFaculty2(newAdvisorID);
+    TreeNode<Faculty>* tempFacultyNode2 = facultyTree.ReturnPointerToNode(tempFaculty2);
+
+    tempFacultyNode2 -> key.AddAdvisee(studentToDelete);
+    cout << " and adding them to " << newAdvisorID << "\'s list of advisees\n\n";
+  }
+  else
+  {
+    cout << endl << endl;
+  }
 }
 void SchoolDatabase ::  Rollback()
 {
@@ -688,7 +789,7 @@ bool SchoolDatabase :: CheckFileNameValid(string fileName)
   return valid;
 }
 
-bool GetYesOrNoInput(const string initialMessage)
+bool SchoolDatabase :: GetYesOrNoInput(const string initialMessage)
 {
   char gameChoice;
   bool invalidInput = true;
@@ -874,7 +975,7 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
   while(true)
   {
     DoublyLinkedList<int> newAdviseesIDsList;
-    
+
     inFile >> newID;
     if(inFile.eof())
     {
@@ -922,7 +1023,6 @@ void SchoolDatabase :: DeserializeFaculty(string fileName)
 
   inFile.close();
 }
-
 void SchoolDatabase :: AddStudentIDToFacultyTree(int facultyID, int newStudentID)
 {
   Faculty tempFaculty(facultyID);

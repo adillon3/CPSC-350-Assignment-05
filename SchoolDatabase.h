@@ -37,7 +37,7 @@
    void AddFaculty();
    void DeleteFaculty(); //Given ID
    void ChangeStudentAdvisor(); //Prompt for student id and the new faculty id
-   void RemoveAdvisee(); //Prompt for facilty ID and student ID
+   void RemoveAdviseeFromID(); //Prompt for facilty ID and student ID
    void Rollback(); //Remove last action from the stack and undo last method
 
  private:
@@ -45,6 +45,7 @@
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
    bool CheckFileNameValid(string fileName);
    bool GetYesOrNoInput(const string initialMessage);
+   int GetNewAdvisorID(const int facultyToDeleteFrom);
 
    int GenerateStudentID();
    int GenerateFacultyID();
