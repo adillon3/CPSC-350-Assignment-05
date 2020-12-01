@@ -45,7 +45,7 @@
    int GetMenuInput(const string initialMessage, const int numMenuOptions);
    bool CheckFileNameValid(string fileName);
    bool GetYesOrNoInput(const string initialMessage);
-   int GetNewAdvisorID(const int facultyToDeleteFrom);
+   //int GetNewAdvisorID(const int facultyToDeleteFrom);
 
    int GenerateStudentID();
    int GenerateFacultyID();

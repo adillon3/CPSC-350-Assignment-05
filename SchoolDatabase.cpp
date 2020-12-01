@@ -523,12 +523,13 @@ void SchoolDatabase :: AddFaculty()
 void SchoolDatabase :: DeleteFaculty()
 {
   bool valid = false;
-  int facultyToDelete;
+  int facultyToDeleteID;
+
 
   do
   {
     cout << "Enter the ID of the Faculty member to remove: ";
-    cin >> facultyToDelete;
+    cin >> facultyToDeleteID;
     if(cin.fail())
     {
       cin.clear();
@@ -537,7 +538,7 @@ void SchoolDatabase :: DeleteFaculty()
 
       valid = false;
     }
-    else if(facultyToDelete > 0)
+    else if(facultyToDeleteID > 0)
     {
       valid = true;
     }
@@ -549,19 +550,29 @@ void SchoolDatabase :: DeleteFaculty()
 
   } while(!valid);
 
-  if(facultyTree.DeleteNode(facultyToDelete))
-  {
-    cout << facultyToDelete << " was removed from the system\n";
+  Faculty facultyToDelete(facultyToDeleteID);
+  TreeNode<Faculty>* facultyToDeleteNode = facultyTree.ReturnPointerToNode(facultyToDelete);
 
-    /*
-    REASSIGN ADVSEES
-    IF LAST FACUTLTY MEMBER ASK IF THEY ARE SURE THAT THEY WANT TO DELETE THEM
-    IS LAST FACULTY, SET ALL STUDENT ADVISORS TO 0
-    */
+
+
+  if(facultyToDeleteNode != nullptr)
+  {
+    int newFacultyForAdvisees = facultyTree.GetANewIDFacultyMemberID(facultyToDeleteID);
+    TreeNode<Faculty>* newFacultyForAdviseesNode = facultyTree.ReturnPointerToNode(newFacultyForAdvisees);
+    DoublyLinkedList<int> listOfAdvisees = facultyToDeleteNode -> key.GetAdviseesIDs();
+
+
+    for(int i = 0; i < listOfAdvisees.GetSize(); ++i)
+    {
+      newFacultyForAdviseesNode -> key.AddAdvisee(listOfAdvisees.GetValueAtIndex(i));
+    }
+
+    facultyTree.DeleteNode(facultyToDeleteNode -> key);
+    cout << facultyToDeleteID << " was removed from the system and their advisees reassigned to " <<  newFacultyForAdvisees << endl << endl;
   }
   else
   {
-    cout << facultyToDelete << " could not be found in the system.\n";
+    cout << facultyToDeleteID << " could not be found in the system.\n\n";
   }
 }
 void SchoolDatabase :: ChangeStudentAdvisor()
